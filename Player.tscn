@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv0p0cj8x48h3"]
+
+[ext_resource type="Texture2D" uid="uid://b8rkh0bq70suv" path="res://Placeholder.jpg" id="1_55tf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g4q3"]
+size = Vector2(92, 66)
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(104, 69)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(49, 33)
+scale = Vector2(0.118125, 0.106132)
+texture = ExtResource("1_55tf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(47, 34)
+shape = SubResource("RectangleShape2D_6g4q3")
