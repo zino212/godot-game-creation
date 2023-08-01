@@ -5,7 +5,9 @@ signal start_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = true
 	visible = true
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -48,6 +50,7 @@ func show_settings():
 func _on_settings_apply_button_pressed(settings):
 	update_settings(settings)
 	
+<<<<<<< HEAD
 func update_settings(_settings: Dictionary) -> void:
 	var _screen_size = DisplayServer.screen_get_size()
 	#var window = get_editor_interface().get_window()
@@ -60,6 +63,22 @@ func update_settings(_settings: Dictionary) -> void:
 	#)
 	#OS.set_window_size(settings.resolution)
 	#OS.vsync_enabled = settings.vsync
+=======
+func update_settings(settings: Dictionary) -> void:
+	
+	DisplayServer.window_set_size(settings.resolution)
+	
+	if settings.fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		
+	if settings.vsync:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	
+>>>>>>> 7138cb3 (Further work on menu)
 	$Settings.visible = false
 	$Menu.visible = true
 

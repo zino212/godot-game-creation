@@ -1,9 +1,7 @@
 extends Panel
 
-# Emitted when the user presses the "apply" button.
 signal apply_button_pressed(settings)
 
-# We store the selected settings in a dictionary
 var _settings := {resolution = Vector2(640, 480), fullscreen = false, vsync = false}
 
 
