@@ -6,6 +6,13 @@
 
 [node name="Main" type="Node"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Player" parent="." instance=ExtResource("1_aso1r")]
 
 [node name="Obstacle" parent="." instance=ExtResource("2_j0mih")]
