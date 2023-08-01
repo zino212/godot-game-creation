@@ -19,3 +19,4 @@ grow_vertical = 2
 position = Vector2(268, 114)
 
 [node name="HUD" parent="." instance=ExtResource("3_d3w67")]
+visible = false
