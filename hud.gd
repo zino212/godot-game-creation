@@ -4,7 +4,9 @@ signal escape
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = true
 	visible = true
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,16 +39,18 @@ func _on_settings_apply_button_pressed(settings):
 	update_settings(settings)
 	
 func update_settings(settings: Dictionary) -> void:
-	var screen_size = DisplayServer.screen_get_size()
-	#var window = get_editor_interface().get_window()
-	#if settings.fullscreen:
-	#	window.mode = Window.MODE_WINDOWED
-	#else:
-	#	window.mode = Window.MODE_FULLSCREEN
-	#get_tree().set_screen_stretch(
-	#	SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, settings.resolution
-	#)
-	#OS.set_window_size(settings.resolution)
-	#OS.vsync_enabled = settings.vsync
+	
+	DisplayServer.window_set_size(settings.resolution)
+	
+	if settings.fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		
+	if settings.vsync:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	
 	$Settings.visible = false
 	$Menu.visible = true

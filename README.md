@@ -1,13 +1,13 @@
 # Game Creation with Godot
 ## To-Do
 ### Mechanics
-- Move Player
+- Move Player - DONE
 - Move Background and Obstacles
 - Collision of Player and Obstacles
 - Implement Lives of Player
-- Implement Loose
+- Implement Lose
 ### Artwork
-- Player
+- Player - DONE
 - Obstacles
 - Background
 ### Menu
