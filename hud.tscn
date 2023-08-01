@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl7ovft0dcrrw"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_brd2m"]
+
+[sub_resource type="Gradient" id="Gradient_qt3yr"]
+offsets = PackedFloat32Array(0.51497)
+colors = PackedColorArray(0.338878, 0.318504, 0.335549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jmvwq"]
+gradient = SubResource("Gradient_qt3yr")
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_brd2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.5, 324.5)
+scale = Vector2(2.76953, 459)
+texture = SubResource("GradientTexture1D_jmvwq")
+
+[node name="Start_Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -27.0
+offset_right = 99.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Start"
+
+[connection signal="pressed" from="Start_Button" to="." method="_on_start_button_pressed"]
