@@ -1,4 +1,5 @@
 extends Area2D
+signal hit
 
 @export var speed = 400
 var screen_size
@@ -40,3 +41,8 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, screen_size.y/2 + 60, screen_size.y - 30)
+
+	position.y = clamp(position.y, screen_size.y/2, screen_size.y - 100)
+
+func _on_body_entered(body):
+	hit.emit()
