@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfrdw5t6y3i42"]
+[gd_scene load_steps=5 format=3 uid="uid://bfrdw5t6y3i42"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_5vm1h"]
 [ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Player.tscn" id="1_aso1r"]
-[ext_resource type="PackedScene" uid="uid://cvkqywnnb18xr" path="res://obstacle.tscn" id="2_j0mih"]
 [ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://hud.tscn" id="3_d3w67"]
 
+[sub_resource type="Curve2D" id="Curve2D_lkqsk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 320, 0, 0, 0, 0, 1152, 648)
+}
+point_count = 2
+
 [node name="Main" type="Node"]
+script = ExtResource("1_5vm1h")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -15,8 +22,25 @@ grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("1_aso1r")]
 
-[node name="Obstacle" parent="." instance=ExtResource("2_j0mih")]
-position = Vector2(268, 114)
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ObstaclePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_lkqsk")
+
+[node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
+position = Vector2(1152, 320)
+rotation = 1.5708
 
 [node name="HUD" parent="." instance=ExtResource("3_d3w67")]
-visible = false
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

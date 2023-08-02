@@ -2,7 +2,8 @@
 ## To-Do
 ### Mechanics
 - Move Player
-- Move Background and Obstacles
+- Move Background
+- DONE: Moving Obstacles
 - Collision of Player and Obstacles
 - Implement Lives of Player
 - Implement Loose

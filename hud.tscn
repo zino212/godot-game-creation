@@ -7,6 +7,36 @@
 process_mode = 3
 script = ExtResource("1_brd2m")
 
+[node name="ScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = 1033.0
+offset_top = 6.0
+offset_right = 1150.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Message" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.0
+offset_top = 94.0
+offset_right = 150.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "Get ready!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
 [node name="Menu" type="Panel" parent="."]
 offset_left = 291.0
 offset_top = 183.0
@@ -50,6 +80,10 @@ offset_left = 292.0
 offset_top = 186.0
 offset_right = 842.0
 offset_bottom = 503.0
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]
 [connection signal="pressed" from="Menu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
