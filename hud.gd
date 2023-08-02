@@ -20,6 +20,13 @@ func _on_start_button_pressed():
 	start_game.emit()
 	$ScoreLabel.show()
 	$LifeLabel.show()
+	$Menu/VBoxContainer/Start_Button.hide()
+	$Menu/VBoxContainer/Resume_Button.show()
+	
+func _on_resume_button_pressed():
+	$Menu.hide()
+	get_tree().paused = false
+
 
 func show_message(text):
 	$Message.text = text
@@ -36,11 +43,13 @@ func update_lives(lives):
 	$LifeLabel.text = str(lives) + " Lives"
 
 func push_escape():
-	if visible:
-		visible = false
+	if $Menu.visible:
+		show_message("")
+		$Menu.visible = false
 		get_tree().paused = false
 	else:
-		visible = true
+		show_message("Game paused")
+		$Menu.visible = true
 		get_tree().paused = true
 
 func show_settings():
