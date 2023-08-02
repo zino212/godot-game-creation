@@ -7,6 +7,19 @@
 process_mode = 3
 script = ExtResource("1_brd2m")
 
+[node name="LifeLabel" type="Label" parent="."]
+visible = false
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Lives"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
 [node name="ScoreLabel" type="Label" parent="."]
 visible = false
 offset_left = 1033.0
@@ -82,7 +95,6 @@ offset_right = 842.0
 offset_bottom = 503.0
 
 [node name="MessageTimer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]

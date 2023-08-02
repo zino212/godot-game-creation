@@ -17,14 +17,21 @@ func _on_start_button_pressed():
 	get_tree().paused = false
 	start_game.emit()
 	$ScoreLabel.show()
+	$LifeLabel.show()
 
 func show_message(text):
 	$Message.text = text
 	$Message.show()
 	$MessageTimer.start()
 
+func hide_message():
+	$Message.hide()
+
 func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)
+
+func update_lives(lives):
+	$LifeLabel.text = str(lives) + " Lives"
 
 func push_escape():
 	if visible:
@@ -55,3 +62,10 @@ func update_settings(_settings: Dictionary) -> void:
 	#OS.vsync_enabled = settings.vsync
 	$Settings.visible = false
 	$Menu.visible = true
+
+func show_game_over():
+	show_message("Game Over!")
+	await $MessageTimer.timeout
+
+	await get_tree().create_timer(1.0).timeout
+	$Menu.show()
