@@ -57,7 +57,8 @@ func _on_score_timer_timeout():
 
 
 func _on_player_hit():
-	check_for_lives()
+	#check_for_lives()
+	pass
 
 func check_for_lives():
 	lives -= 1
