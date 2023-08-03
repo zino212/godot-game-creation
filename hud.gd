@@ -20,7 +20,7 @@ func _on_start_button_pressed():
 	start_game.emit()
 	$ScoreLabel.show()
 	$"Health Bar".show()
-	$Menu/VBoxContainer/Start_Button.hide()
+	$Menu/VBoxContainer/Start_Button.text = "Restart"
 	$Menu/VBoxContainer/Resume_Button.show()
 	
 func _on_resume_button_pressed():
@@ -81,5 +81,9 @@ func show_game_over():
 	await $MessageTimer.timeout
 	await get_tree().create_timer(1.0).timeout
 	$Menu/VBoxContainer/Resume_Button.hide()
-	$Menu/VBoxContainer/Start_Button.show()
+	$Menu/VBoxContainer/Start_Button.text = "Start Game"
 	$Menu.show()
+
+
+func _on_end_button_pressed():
+	get_tree().quit()

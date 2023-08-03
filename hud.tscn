@@ -48,10 +48,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -275.5
-offset_top = -161.5
-offset_right = 275.5
-offset_bottom = 161.5
+offset_left = -275.0
+offset_top = -161.0
+offset_right = 276.0
+offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -74,25 +74,31 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Settings"
-
-[node name="HSeparator2" type="HSeparator" parent="Menu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-
-[node name="Start_Button" type="Button" parent="Menu/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Start"
-
 [node name="Resume_Button" type="Button" parent="Menu/VBoxContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Resume"
+
+[node name="Start_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Start Game"
+
+[node name="HSeparator2" type="HSeparator" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Settings"
+
+[node name="End_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 22
+text = "End Game"
 
 [node name="Settings" parent="." instance=ExtResource("2_i4188")]
 visible = false
@@ -111,7 +117,8 @@ grow_vertical = 2
 [node name="MessageTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]
-[connection signal="pressed" from="Menu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]
+[connection signal="pressed" from="Menu/VBoxContainer/End_Button" to="." method="_on_end_button_pressed"]
 [connection signal="apply_button_pressed" from="Settings" to="." method="_on_settings_apply_button_pressed"]

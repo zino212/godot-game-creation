@@ -14,6 +14,10 @@ func _process(_delta):
 	increase_difficulty()
 
 func new_game():
+	
+	$ObstacleTimer.stop()
+	$ScoreTimer.stop()
+	
 	score = 0
 	lives = 3
 	obs_velocity = 150.0
