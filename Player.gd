@@ -44,5 +44,5 @@ func _process(delta):
 
 	position.y = clamp(position.y, screen_size.y/2, screen_size.y - 100)
 
-func _on_body_entered(_body):
+func _on_body_entered(__body):
 	hit.emit()
