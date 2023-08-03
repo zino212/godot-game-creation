@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0dtk3et5b0u5"]
+[gd_scene load_steps=2 format=3 uid="uid://d0dtk3et5b0u5"]
 
-[ext_resource type="Script" path="res://Resolution_Selector.gd" id="1_7ccg5"]
 [ext_resource type="Script" path="res://settings.gd" id="1_wiu41"]
-[ext_resource type="Script" path="res://Fullscreen_Selector.gd" id="2_fues5"]
-[ext_resource type="Script" path="res://Vsync_Selector.gd" id="3_ex1yl"]
 
 [node name="Settings" type="Panel"]
 offset_right = 562.0
@@ -29,8 +26,8 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="Resolution_Selector" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
-script = ExtResource("1_7ccg5")
 
 [node name="Label" type="Label" parent="VBoxContainer/Resolution_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -54,7 +51,6 @@ popup/item_2/id = 2
 [node name="Fullscreen_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-script = ExtResource("2_fues5")
 
 [node name="Label" type="Label" parent="VBoxContainer/Fullscreen_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -63,14 +59,13 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Full Screen"
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Fullscreen_Selector"]
+[node name="FullscreenCheckBox" type="CheckBox" parent="VBoxContainer/Fullscreen_Selector"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 
 [node name="Vsync_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-script = ExtResource("3_ex1yl")
 
 [node name="Label" type="Label" parent="VBoxContainer/Vsync_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -78,7 +73,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "VSync"
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Vsync_Selector"]
+[node name="VsyncCheckBox" type="CheckBox" parent="VBoxContainer/Vsync_Selector"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
@@ -91,9 +86,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Apply"
 
-[connection signal="resolution_changed" from="VBoxContainer/Resolution_Selector" to="." method="_on_resolution_selector_resolution_changed"]
-[connection signal="toggled" from="VBoxContainer/Fullscreen_Selector" to="." method="_on_fullscreen_selector_toggled"]
-[connection signal="toggled" from="VBoxContainer/Fullscreen_Selector/CheckBox" to="VBoxContainer/Fullscreen_Selector" method="_on_check_box_toggled"]
-[connection signal="toggled" from="VBoxContainer/Vsync_Selector" to="." method="_on_vsync_selector_toggled"]
-[connection signal="toggled" from="VBoxContainer/Vsync_Selector/CheckBox" to="VBoxContainer/Vsync_Selector" method="_on_check_box_toggled"]
+[connection signal="item_selected" from="VBoxContainer/Resolution_Selector/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="VBoxContainer/Fullscreen_Selector/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/Vsync_Selector/VsyncCheckBox" to="." method="_on_vsync_check_box_toggled"]
 [connection signal="pressed" from="VBoxContainer/Apply_Button" to="." method="_on_apply_button_pressed"]

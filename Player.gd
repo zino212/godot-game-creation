@@ -22,6 +22,8 @@ func take_damage(impact):
 
 	if hp <= 0.0:
 		emit_signal("killed")
+	
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,5 +46,6 @@ func _process(delta):
 
 	position.y = clamp(position.y, screen_size.y/2, screen_size.y - 100)
 
-func _on_body_entered(_body):
+func _on_body_entered(body):
+	body.hide()
 	hit.emit()

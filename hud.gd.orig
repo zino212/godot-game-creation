@@ -19,14 +19,7 @@ func _on_start_button_pressed():
 	get_tree().paused = false
 	start_game.emit()
 	$ScoreLabel.show()
-	$"Health Bar".show()
-	$Menu/VBoxContainer/Start_Button.text = "Restart"
-	$Menu/VBoxContainer/Resume_Button.show()
-	
-func _on_resume_button_pressed():
-	$Menu.hide()
-	get_tree().paused = false
-
+	$LifeLabel.show()
 
 func show_message(text):
 	$Message.text = text
@@ -40,16 +33,14 @@ func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)
 
 func update_lives(lives):
-	$"Health Bar".set_lives(lives)
+	$LifeLabel.text = str(lives) + " Lives"
 
 func push_escape():
-	if $Message.text == "Game paused":
-		show_message("")
-		$Menu.visible = false
+	if visible:
+		visible = false
 		get_tree().paused = false
-	elif ($Message.text == "") and ($ScoreLabel.visible):
-		show_message("Game paused")
-		$Menu.visible = true
+	else:
+		visible = true
 		get_tree().paused = true
 
 func show_settings():
@@ -59,6 +50,20 @@ func show_settings():
 func _on_settings_apply_button_pressed(settings):
 	update_settings(settings)
 	
+<<<<<<< HEAD
+func update_settings(_settings: Dictionary) -> void:
+	var _screen_size = DisplayServer.screen_get_size()
+	#var window = get_editor_interface().get_window()
+	#if settings.fullscreen:
+	#	window.mode = Window.MODE_WINDOWED
+	#else:
+	#	window.mode = Window.MODE_FULLSCREEN
+	#get_tree().set_screen_stretch(
+	#	SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, settings.resolution
+	#)
+	#OS.set_window_size(settings.resolution)
+	#OS.vsync_enabled = settings.vsync
+=======
 func update_settings(settings: Dictionary) -> void:
 	
 	DisplayServer.window_set_size(settings.resolution)
@@ -73,17 +78,13 @@ func update_settings(settings: Dictionary) -> void:
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	
+>>>>>>> 7138cb3 (Further work on menu)
 	$Settings.visible = false
 	$Menu.visible = true
 
 func show_game_over():
 	show_message("Game Over!")
 	await $MessageTimer.timeout
+
 	await get_tree().create_timer(1.0).timeout
-	$Menu/VBoxContainer/Resume_Button.hide()
-	$Menu/VBoxContainer/Start_Button.text = "Start Game"
 	$Menu.show()
-
-
-func _on_end_button_pressed():
-	get_tree().quit()
