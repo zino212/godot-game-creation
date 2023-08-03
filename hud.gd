@@ -43,11 +43,11 @@ func update_lives(lives):
 	$"Health Bar".set_lives(lives)
 
 func push_escape():
-	if $Menu.visible:
+	if $Message.text == "Game paused":
 		show_message("")
 		$Menu.visible = false
 		get_tree().paused = false
-	else:
+	elif ($Message.text == "") and ($ScoreLabel.visible):
 		show_message("Game paused")
 		$Menu.visible = true
 		get_tree().paused = true
