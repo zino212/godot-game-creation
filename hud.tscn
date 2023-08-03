@@ -1,22 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl7ovft0dcrrw"]
+[gd_scene load_steps=4 format=3 uid="uid://bl7ovft0dcrrw"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_brd2m"]
 [ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://settings.tscn" id="2_i4188"]
+[ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://health_bar.tscn" id="2_u18ck"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_brd2m")
 
-[node name="LifeLabel" type="Label" parent="."]
+[node name="Health Bar" parent="." instance=ExtResource("2_u18ck")]
 visible = false
-offset_right = 130.0
-offset_bottom = 91.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "Lives"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_group_ = true
 
 [node name="ScoreLabel" type="Label" parent="."]
 visible = false

@@ -19,7 +19,7 @@ func _on_start_button_pressed():
 	get_tree().paused = false
 	start_game.emit()
 	$ScoreLabel.show()
-	$LifeLabel.show()
+	$"Health Bar".show()
 	$Menu/VBoxContainer/Start_Button.hide()
 	$Menu/VBoxContainer/Resume_Button.show()
 	
@@ -40,7 +40,7 @@ func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)
 
 func update_lives(lives):
-	$LifeLabel.text = str(lives) + " Lives"
+	$"Health Bar".set_lives(lives)
 
 func push_escape():
 	if $Menu.visible:
@@ -80,4 +80,6 @@ func show_game_over():
 	show_message("Game Over!")
 	await $MessageTimer.timeout
 	await get_tree().create_timer(1.0).timeout
+	$Menu/VBoxContainer/Resume_Button.hide()
+	$Menu/VBoxContainer/Start_Button.show()
 	$Menu.show()

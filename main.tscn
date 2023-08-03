@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Player.tscn" id="1_aso1r"]
 [ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
-[ext_resource type="PackedScene" path="res://enemy.tscn" id="2_7x332"]
+[ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://enemy.tscn" id="2_7x332"]
 [ext_resource type="PackedScene" uid="uid://cvkqywnnb18xr" path="res://obstacle.tscn" id="2_j0mih"]
 [ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://hud.tscn" id="3_d3w67"]
-[ext_resource type="PackedScene" path="res://health_bar.tscn" id="5_qvvs7"]
+[ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://health_bar.tscn" id="5_qvvs7"]
 
 [sub_resource type="Curve2D" id="Curve2D_lkqsk"]
 _data = {
@@ -41,6 +41,7 @@ position = Vector2(268, 114)
 visible = false
 
 [node name="Health Bar" parent="." instance=ExtResource("5_qvvs7")]
+visible = false
 
 [node name="ObstacleTimer" type="Timer" parent="."]
 wait_time = 3.0
