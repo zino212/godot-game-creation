@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfrdw5t6y3i42"]
+[gd_scene load_steps=6 format=3 uid="uid://bfrdw5t6y3i42"]
 
 [ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Player.tscn" id="1_aso1r"]
 [ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
 [ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://enemy.tscn" id="2_7x332"]
-[ext_resource type="PackedScene" uid="uid://cvkqywnnb18xr" path="res://obstacle.tscn" id="2_j0mih"]
 [ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://hud.tscn" id="3_d3w67"]
 
 [sub_resource type="Curve2D" id="Curve2D_lkqsk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1152, 320, 0, 0, 0, 0, 1152, 648)
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 352, 0, 0, 0, 0, 1152, 576)
 }
 point_count = 2
 
@@ -33,9 +32,7 @@ one_shot = true
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="Enemy" parent="." instance=ExtResource("2_7x332")]
-
-[node name="Obstacle" parent="." instance=ExtResource("2_j0mih")]
-position = Vector2(268, 114)
+visible = false
 
 [node name="HUD" parent="." instance=ExtResource("3_d3w67")]
 visible = false
@@ -47,7 +44,7 @@ wait_time = 3.0
 curve = SubResource("Curve2D_lkqsk")
 
 [node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
-position = Vector2(1152, 320)
+position = Vector2(1152, 352)
 rotation = 1.5708
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
