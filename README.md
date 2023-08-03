@@ -12,7 +12,9 @@
 - DONE: Player
 - Obstacles
 - Background
-- Lives
+- DONE: Lives
 ### Menu
 - DONE: Pause Game
-- Implement Settings
+- DONE: Implement Settings
+- Make resolution work
+- Make graphics dynamic for resolution

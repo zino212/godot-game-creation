@@ -2,16 +2,18 @@ extends Panel
 
 signal apply_button_pressed(settings)
 
-var _settings := {resolution = Vector2(640, 480), fullscreen = false, vsync = false}
+var _settings := {resolution = Vector2(1920, 1080), fullscreen = false, vsync = false}
 
-func _on_apply_button_pressed() -> void:
+func _on_apply_button_pressed():
 	emit_signal("apply_button_pressed", _settings)
 
-func _on_resolution_selector_resolution_changed(new_resolution: Vector2) -> void:
-	_settings.resolution = new_resolution
+func _on_fullscreen_check_box_toggled(button_pressed):
+	_settings.fullscreen = button_pressed
 
-func _on_fullscreen_selector_toggled(is_button_pressed: bool) -> void:
-	_settings.fullscreen = is_button_pressed
+func _on_vsync_check_box_toggled(button_pressed):
+	_settings.vsync = button_pressed
 
-func _on_vsync_selector_toggled(is_button_pressed: bool) -> void:
-	_settings.vsync = is_button_pressed
+func _on_option_button_item_selected(index):
+	var text = $VBoxContainer/Resolution_Selector/OptionButton.get_item_text(index)
+	var values = text.split_floats("x")
+	_settings.resolution = Vector2(values[0], values[1])
