@@ -8,7 +8,7 @@ var obs_velocity
 
 var item_scene = preload("res://item.tscn")
 var item_type
-var shield
+var shield = false
 
 func _ready():
 	pass
@@ -20,7 +20,6 @@ func _process(_delta):
 func new_game():
 	
 	$ObstacleTimer.stop()
-	$ShieldTimer.stop()
 	$ItemTimer.stop()
 	$ScoreTimer.stop()
 	
@@ -78,7 +77,6 @@ func _on_start_timer_timeout():
 	$ItemTimer.start()
 	$ScoreTimer.start()
 
-
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
@@ -87,16 +85,16 @@ func set_item_type(t):
 	item_type = t
 
 func _on_player_hit(body):
-	if "Obstacle" in str(body) and shield == false:
-		blink_player()
-		check_for_lives()
-	elif "Item" in str(body):
+	if "Item" in str(body):
 		if item_type == 0:
 			add_shield()
 		elif item_type == 1:
 			add_missile()
 		elif item_type == 2:
 			add_life()
+	elif shield == false:
+		blink_player()
+		check_for_lives()
 
 func add_shield():
 	shield = true
@@ -106,7 +104,9 @@ func add_missile():
 	pass	
 
 func add_life():
-	pass
+	if lives < 3:
+		lives += 1
+		$HUD.update_lives(lives)
 
 func check_for_lives():
 	lives -= 1
@@ -115,7 +115,7 @@ func check_for_lives():
 		game_over()
 
 func blink_player():
-	$Player.take_damage(1)
+	pass
 
 func game_over():
 	$ScoreTimer.stop()
