@@ -30,6 +30,7 @@ script = ExtResource("1_r6qfe")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
 scale = Vector2(0.0742188, 0.0771484)
 sprite_frames = SubResource("SpriteFrames_t61hq")
 

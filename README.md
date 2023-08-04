@@ -13,8 +13,12 @@
 - Obstacles
 - Background
 - DONE: Lives
+- Items
 ### Menu
 - DONE: Pause Game
 - DONE: Implement Settings
 - Make resolution work
 - Make graphics dynamic for resolution
+### Items
+- Implement shield mechanic
+- Implement gun mechanic

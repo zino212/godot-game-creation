@@ -1,10 +1,15 @@
 extends Node
 
-var obstacle_scene = preload("res://obstacle.tscn")
 var score
 var lives
 
+var obstacle_scene = preload("res://obstacle.tscn")
 var obs_velocity
+
+var item_scene = preload("res://item.tscn")
+var item_type
+var shield = false
+var missile = false
 
 func _ready():
 	pass
@@ -12,18 +17,26 @@ func _ready():
 func _process(_delta):
 	show_timer()
 	increase_difficulty()
+	
+	if $ShieldTimer.time_left < 5 and $ShieldTimer.time_left > 0:
+		$Player.lose_shield()
 
 func new_game():
 	
 	$ObstacleTimer.stop()
+	$ItemTimer.stop()
 	$ScoreTimer.stop()
 	
+	shield = false
 	score = 0
 	lives = 3
 	obs_velocity = 150.0
 	$ObstacleTimer.wait_time = 3
+	$ItemTimer.wait_time = 10
 	
 	get_tree().call_group("obstacles", "queue_free")
+	get_tree().call_group("items", "queue_free")
+	
 	$HUD.update_score(score)
 	$HUD.update_lives(lives)
 	$HUD.show_message("Get ready!")
@@ -44,7 +57,8 @@ func show_timer():
 	
 
 func _on_obstacle_timer_timeout():
-	spawn_obstacle()
+	if missile == false:
+		spawn_obstacle()
 	
 
 func spawn_obstacle():
@@ -67,17 +81,45 @@ func spawn_obstacle():
 func _on_start_timer_timeout():
 	spawn_obstacle()
 	$ObstacleTimer.start()
+	$ItemTimer.start()
 	$ScoreTimer.start()
-
 
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
 
+func set_item_type(t):
+	item_type = t
 
-func _on_player_hit():
-	blink_player()
-	check_for_lives()
+func _on_player_hit(body):
+	if "Item" in str(body):
+		if item_type == 0:
+			add_shield()
+		elif item_type == 1:
+			add_missile()
+		elif item_type == 2:
+			add_life()
+	elif shield == false and $HurtTimer.time_left == 0:
+		$Player.blink()
+		check_for_lives()
+		$HurtTimer.start()
+
+func add_shield():
+	shield = true
+	$ShieldTimer.start()
+	$Player.shield()
+
+func add_missile():
+	missile = true
+	$MissileTimer.start()
+	get_tree().call_group("obstacles", "queue_free")
+	$Player/MissileShot.show()
+	$Player/MissileShot.play("shot")
+
+func add_life():
+	if lives < 3:
+		lives += 1
+		$HUD.update_lives(lives)
 
 func check_for_lives():
 	lives -= 1
@@ -86,10 +128,51 @@ func check_for_lives():
 		game_over()
 
 func blink_player():
-	$Player.take_damage(1)
+	pass
 
 func game_over():
 	$ScoreTimer.stop()
 	$ObstacleTimer.stop()
+	$ItemTimer.stop()
+	$HurtTimer.stop()
+	
+	get_tree().call_group("obstacles", "queue_free")
+	get_tree().call_group("items", "queue_free")
+	
 	$HUD.show_game_over()
 	$Player.hide()
+
+
+func _on_item_timer_timeout():
+	var item = item_scene.instantiate()
+
+	var item_spawn_location = get_node("ObstaclePath/ObstacleSpawnLocation")
+	item_spawn_location.progress_ratio = randf()
+
+	var direction = item_spawn_location.rotation + PI / 2
+
+	item.position = item_spawn_location.position
+
+	item.rotation = direction
+
+	var velocity = Vector2(obs_velocity, 0.0)
+	item.linear_velocity = velocity.rotated(direction)
+	add_child(item)
+	item_type = item.get_item_type()
+
+
+func _on_shield_timer_timeout():
+	shield = false
+	$Player.normal_animation()
+
+
+func _on_hurt_timer_timeout():
+	$Player.normal_animation()
+
+
+func _on_missile_timer_timeout():
+	missile = false
+
+
+func _on_missile_shot_animation_finished():
+	$Player/MissileShot.hide()
