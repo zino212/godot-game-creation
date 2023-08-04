@@ -16,6 +16,9 @@ func _ready():
 func _process(_delta):
 	show_timer()
 	increase_difficulty()
+	
+	if $ShieldTimer.time_left < 5 and $ShieldTimer.time_left > 0:
+		$Player.lose_shield()
 
 func new_game():
 	
@@ -92,13 +95,15 @@ func _on_player_hit(body):
 			add_missile()
 		elif item_type == 2:
 			add_life()
-	elif shield == false:
-		blink_player()
+	elif shield == false and $HurtTimer.time_left == 0:
+		$Player.blink()
 		check_for_lives()
+		$HurtTimer.start()
 
 func add_shield():
 	shield = true
 	$ShieldTimer.start()
+	$Player.shield()
 
 func add_missile():
 	pass	
@@ -121,6 +126,8 @@ func game_over():
 	$ScoreTimer.stop()
 	$ObstacleTimer.stop()
 	$ItemTimer.stop()
+	$HurtTimer.stop()
+	
 	$HUD.show_game_over()
 	$Player.hide()
 
@@ -145,3 +152,8 @@ func _on_item_timer_timeout():
 
 func _on_shield_timer_timeout():
 	shield = false
+	$Player.normal_animation()
+
+
+func _on_hurt_timer_timeout():
+	$Player.normal_animation()
