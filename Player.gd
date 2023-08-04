@@ -1,5 +1,5 @@
 extends Area2D
-signal hit
+signal hit(body)
 
 @export var speed = 400
 var screen_size
@@ -48,4 +48,4 @@ func _process(delta):
 
 func _on_body_entered(body):
 	body.hide()
-	hit.emit()
+	hit.emit(body)

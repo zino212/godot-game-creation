@@ -1,11 +1,14 @@
 extends Node
 
-var obstacle_scene = preload("res://obstacle.tscn")
-var item_scene = preload("res://item.tscn")
 var score
 var lives
 
+var obstacle_scene = preload("res://obstacle.tscn")
 var obs_velocity
+
+var item_scene = preload("res://item.tscn")
+var item_type
+var shield
 
 func _ready():
 	pass
@@ -17,9 +20,11 @@ func _process(_delta):
 func new_game():
 	
 	$ObstacleTimer.stop()
+	$ShieldTimer.stop()
 	$ItemTimer.stop()
 	$ScoreTimer.stop()
 	
+	shield = false
 	score = 0
 	lives = 3
 	obs_velocity = 150.0
@@ -78,10 +83,30 @@ func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
 
+func set_item_type(t):
+	item_type = t
 
-func _on_player_hit():
-	blink_player()
-	check_for_lives()
+func _on_player_hit(body):
+	if "Obstacle" in str(body) and shield == false:
+		blink_player()
+		check_for_lives()
+	elif "Item" in str(body):
+		if item_type == 0:
+			add_shield()
+		elif item_type == 1:
+			add_missile()
+		elif item_type == 2:
+			add_life()
+
+func add_shield():
+	shield = true
+	$ShieldTimer.start()
+
+func add_missile():
+	pass	
+
+func add_life():
+	pass
 
 func check_for_lives():
 	lives -= 1
@@ -114,5 +139,9 @@ func _on_item_timer_timeout():
 
 	var velocity = Vector2(obs_velocity, 0.0)
 	item.linear_velocity = velocity.rotated(direction)
-
 	add_child(item)
+	item_type = item.get_item_type()
+
+
+func _on_shield_timer_timeout():
+	shield = false

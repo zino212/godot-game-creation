@@ -50,9 +50,14 @@ rotation = 1.5708
 [node name="ItemTimer" type="Timer" parent="."]
 wait_time = 25.0
 
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
