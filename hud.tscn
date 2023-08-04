@@ -1,31 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl7ovft0dcrrw"]
+[gd_scene load_steps=4 format=3 uid="uid://bl7ovft0dcrrw"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_brd2m"]
 [ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://settings.tscn" id="2_i4188"]
+[ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://health_bar.tscn" id="2_u18ck"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_brd2m")
 
-[node name="LifeLabel" type="Label" parent="."]
+[node name="Health Bar" parent="." instance=ExtResource("2_u18ck")]
 visible = false
-offset_left = 12.0
-offset_top = 8.0
-offset_right = 142.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "Lives"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_group_ = true
 
 [node name="ScoreLabel" type="Label" parent="."]
 visible = false
-offset_left = 1033.0
-offset_top = 6.0
-offset_right = 1150.0
-offset_bottom = 92.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -117.0
+offset_bottom = 86.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "0"
@@ -39,9 +32,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -156.0
-offset_top = 94.0
+offset_top = 50.0
 offset_right = 150.0
-offset_bottom = 193.0
+offset_bottom = 149.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
@@ -51,10 +44,19 @@ vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="Menu" type="Panel" parent="."]
-offset_left = 291.0
-offset_top = 183.0
-offset_right = 842.0
-offset_bottom = 506.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.5
+offset_top = -186.5
+offset_right = 275.5
+offset_bottom = 186.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 layout_mode = 0
@@ -73,30 +75,51 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
+[node name="Resume_Button" type="Button" parent="Menu/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Settings"
+text = "Resume"
+
+[node name="Start_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Start Game"
 
 [node name="HSeparator2" type="HSeparator" parent="Menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="Start_Button" type="Button" parent="Menu/VBoxContainer"]
+[node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Start"
+text = "Settings"
+
+[node name="End_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 22
+text = "End Game"
 
 [node name="Settings" parent="." instance=ExtResource("2_i4188")]
 visible = false
-offset_left = 292.0
-offset_top = 186.0
-offset_right = 842.0
-offset_bottom = 503.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -158.5
+offset_right = 275.0
+offset_bottom = 158.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MessageTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]
+[connection signal="pressed" from="Menu/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]
+[connection signal="pressed" from="Menu/VBoxContainer/End_Button" to="." method="_on_end_button_pressed"]
 [connection signal="apply_button_pressed" from="Settings" to="." method="_on_settings_apply_button_pressed"]
