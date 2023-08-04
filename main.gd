@@ -9,6 +9,7 @@ var obs_velocity
 var item_scene = preload("res://item.tscn")
 var item_type
 var shield = false
+var missile = false
 
 func _ready():
 	pass
@@ -34,6 +35,8 @@ func new_game():
 	$ItemTimer.wait_time = 10
 	
 	get_tree().call_group("obstacles", "queue_free")
+	get_tree().call_group("items", "queue_free")
+	
 	$HUD.update_score(score)
 	$HUD.update_lives(lives)
 	$HUD.show_message("Get ready!")
@@ -54,7 +57,8 @@ func show_timer():
 	
 
 func _on_obstacle_timer_timeout():
-	spawn_obstacle()
+	if missile == false:
+		spawn_obstacle()
 	
 
 func spawn_obstacle():
@@ -106,7 +110,11 @@ func add_shield():
 	$Player.shield()
 
 func add_missile():
-	pass	
+	missile = true
+	$MissileTimer.start()
+	get_tree().call_group("obstacles", "queue_free")
+	$Player/MissileShot.show()
+	$Player/MissileShot.play("shot")
 
 func add_life():
 	if lives < 3:
@@ -127,6 +135,9 @@ func game_over():
 	$ObstacleTimer.stop()
 	$ItemTimer.stop()
 	$HurtTimer.stop()
+	
+	get_tree().call_group("obstacles", "queue_free")
+	get_tree().call_group("items", "queue_free")
 	
 	$HUD.show_game_over()
 	$Player.hide()
@@ -157,3 +168,11 @@ func _on_shield_timer_timeout():
 
 func _on_hurt_timer_timeout():
 	$Player.normal_animation()
+
+
+func _on_missile_timer_timeout():
+	missile = false
+
+
+func _on_missile_shot_animation_finished():
+	$Player/MissileShot.hide()
