@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://1i6oiybm5hxy"]
+
+[ext_resource type="Script" path="res://InfiniteScrollBackground.gd" id="1_xk676"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_majqd"]
+load_path = "res://.godot/imported/Project_Backgroundtest.png-33fe858647ef37db59be655276762fbd.ctex"
+
+[node name="InfiniteScrollBackground" type="ParallaxBackground"]
+script = ExtResource("1_xk676")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+texture = SubResource("CompressedTexture2D_majqd")
+centered = false

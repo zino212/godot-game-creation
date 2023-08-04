@@ -6,6 +6,8 @@ var lives
 var obstacle_scene = preload("res://obstacle.tscn")
 var obs_velocity
 
+var explosion_scene = preload("res://explosion.tscn")
+
 var item_scene = preload("res://item.tscn")
 var item_type
 var shield = false
@@ -16,9 +18,8 @@ func _ready():
 
 func _process(_delta):
 	show_timer()
-	increase_difficulty()
 	
-	if $ShieldTimer.time_left < 5 and $ShieldTimer.time_left > 0:
+	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
 		$Player.lose_shield()
 
 func new_game():
@@ -45,15 +46,18 @@ func new_game():
 
 func increase_difficulty():
 	if (score >= 9) and ((score % 10) == 0):
-		obs_velocity += 1.0
+		obs_velocity += 5.0
 		if $ObstacleTimer.wait_time > 1:
 			$ObstacleTimer.wait_time -= 0.2
 
 func show_timer():
 	if ($StartTimer.time_left <= 4) and not ($StartTimer.time_left < 1):
 		$HUD.show_message(str(int($StartTimer.time_left)))
-	elif ($StartTimer.time_left < 1) and not ($ScoreTimer.is_stopped()):
+	if ($StartTimer.time_left < 1) and ($StartTimer.time_left > 0):
+		$HUD.show_message("Go!")
+	elif not ($ScoreTimer.is_stopped()):
 		$HUD.show_message("")
+		$HUD.hide_message()
 	
 
 func _on_obstacle_timer_timeout():
@@ -87,12 +91,15 @@ func _on_start_timer_timeout():
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
+	increase_difficulty()
+	
 
 func set_item_type(t):
 	item_type = t
 
 func _on_player_hit(body):
 	if "Item" in str(body):
+		$AudioPlayer.play_item_audio(item_type)
 		if item_type == 0:
 			add_shield()
 		elif item_type == 1:
@@ -101,6 +108,7 @@ func _on_player_hit(body):
 			add_life()
 	elif shield == false and $HurtTimer.time_left == 0:
 		$Player.blink()
+		$Camera2D.shake(.3,50,7)
 		check_for_lives()
 		$HurtTimer.start()
 
@@ -126,15 +134,18 @@ func check_for_lives():
 	$HUD.update_lives(lives)
 	if lives == 0:
 		game_over()
-
-func blink_player():
-	pass
+	else:
+		$AudioPlayer.play_hurt_audio()
 
 func game_over():
 	$ScoreTimer.stop()
 	$ObstacleTimer.stop()
 	$ItemTimer.stop()
 	$HurtTimer.stop()
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = $Player.position
+	add_child(explosion)
+	$Camera2D.shake(.3,50,7)
 	
 	get_tree().call_group("obstacles", "queue_free")
 	get_tree().call_group("items", "queue_free")
@@ -150,16 +161,15 @@ func _on_item_timer_timeout():
 	item_spawn_location.progress_ratio = randf()
 
 	var direction = item_spawn_location.rotation + PI / 2
-
+	add_child(item)
 	item.position = item_spawn_location.position
 
 	item.rotation = direction
-
+	
 	var velocity = Vector2(obs_velocity, 0.0)
 	item.linear_velocity = velocity.rotated(direction)
-	add_child(item)
+	
 	item_type = item.get_item_type()
-
 
 func _on_shield_timer_timeout():
 	shield = false

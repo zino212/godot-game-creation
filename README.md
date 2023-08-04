@@ -17,8 +17,8 @@
 ### Menu
 - DONE: Pause Game
 - DONE: Implement Settings
-- Make resolution work
-- Make graphics dynamic for resolution
+- DONE: Make resolution work
+- DONE: Make graphics dynamic for resolution
 ### Items
 - DONE: Implement shield mechanic
 - DONE: Implement missile mechanic
@@ -27,3 +27,8 @@
 - DONE: Add animation for getting hit
 - DONE: Add animation for shield
 - DONE: Add animation for missile
+- DONE: Add animation for game over
+- Add better animation for shield
+- Add better animation for missile
+### General
+- Restructure project
