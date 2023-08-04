@@ -1,6 +1,7 @@
 extends Node
 
 var obstacle_scene = preload("res://obstacle.tscn")
+var item_scene = preload("res://item.tscn")
 var score
 var lives
 
@@ -16,12 +17,14 @@ func _process(_delta):
 func new_game():
 	
 	$ObstacleTimer.stop()
+	$ItemTimer.stop()
 	$ScoreTimer.stop()
 	
 	score = 0
 	lives = 3
 	obs_velocity = 150.0
 	$ObstacleTimer.wait_time = 3
+	$ItemTimer.wait_time = 10
 	
 	get_tree().call_group("obstacles", "queue_free")
 	$HUD.update_score(score)
@@ -67,6 +70,7 @@ func spawn_obstacle():
 func _on_start_timer_timeout():
 	spawn_obstacle()
 	$ObstacleTimer.start()
+	$ItemTimer.start()
 	$ScoreTimer.start()
 
 
@@ -91,5 +95,24 @@ func blink_player():
 func game_over():
 	$ScoreTimer.stop()
 	$ObstacleTimer.stop()
+	$ItemTimer.stop()
 	$HUD.show_game_over()
 	$Player.hide()
+
+
+func _on_item_timer_timeout():
+	var item = item_scene.instantiate()
+
+	var item_spawn_location = get_node("ObstaclePath/ObstacleSpawnLocation")
+	item_spawn_location.progress_ratio = randf()
+
+	var direction = item_spawn_location.rotation + PI / 2
+
+	item.position = item_spawn_location.position
+
+	item.rotation = direction
+
+	var velocity = Vector2(obs_velocity, 0.0)
+	item.linear_velocity = velocity.rotated(direction)
+
+	add_child(item)
