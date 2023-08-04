@@ -7,7 +7,7 @@
 - DONE: Collision of Player and Obstacles
 - DONE: Implement Lives of Player
 - DONE: Implement Lose
-- Implement collision with enemy
+- Implement collision with enemy?
 ### Artwork
 - DONE: Player
 - Obstacles
@@ -20,5 +20,10 @@
 - Make resolution work
 - Make graphics dynamic for resolution
 ### Items
-- Implement shield mechanic
-- Implement gun mechanic
+- DONE: Implement shield mechanic
+- DONE: Implement missile mechanic
+- DONE: Implement extra life mechanic
+### Animation
+- DONE: Add animation for getting hit
+- DONE: Add animation for shield
+- DONE: Add animation for missile
