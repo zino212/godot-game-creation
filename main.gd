@@ -19,7 +19,7 @@ func _ready():
 func _process(_delta):
 	show_timer()
 	
-	if $ShieldTimer.time_left < 5 and $ShieldTimer.time_left > 0:
+	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
 		$Player.lose_shield()
 
 func new_game():
@@ -130,6 +130,8 @@ func check_for_lives():
 	$HUD.update_lives(lives)
 	if lives == 0:
 		game_over()
+	else:
+		$HurtAudio.play()
 
 func game_over():
 	$ScoreTimer.stop()
