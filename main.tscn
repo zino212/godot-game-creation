@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dl7xqsyiouaa7"]
+[gd_scene load_steps=24 format=3 uid="uid://dl7xqsyiouaa7"]
 
 [ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Player.tscn" id="1_aso1r"]
 [ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dicbxoha14ecw" path="res://MissileAnimation/Missile13.png" id="15_aihe8"]
 [ext_resource type="Script" path="res://audioPlayer.gd" id="20_6ue2d"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="20_egwdq"]
+[ext_resource type="Script" path="res://ItemAudio.gd" id="21_hrkuc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8nhas"]
 animations = [{
@@ -261,6 +262,9 @@ script = ExtResource("20_egwdq")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("20_6ue2d")
+
+[node name="ItemAudio" type="AudioStreamPlayer" parent="."]
+script = ExtResource("21_hrkuc")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="animation_finished" from="Player/MissileShot" to="." method="_on_missile_shot_animation_finished"]
