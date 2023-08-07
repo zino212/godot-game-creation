@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://colo8fjls8kgr"]
+[gd_scene load_steps=17 format=3 uid="uid://colo8fjls8kgr"]
 
 [ext_resource type="Script" path="res://MissileShot.gd" id="1_3symp"]
 [ext_resource type="Texture2D" uid="uid://dwthxdls86a02" path="res://Explosion/dust.png" id="2_0d7t3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nyl3cu5xxsn7" path="res://Explosion/Explosion2.png" id="4_3863u"]
 [ext_resource type="Texture2D" uid="uid://owm4vu4a2jtd" path="res://Explosion/Explosion3.png" id="5_dxxvc"]
 [ext_resource type="Texture2D" uid="uid://caoqgph4qgxq8" path="res://Explosion/Explosion4.png" id="6_tneo4"]
+[ext_resource type="AudioStream" uid="uid://cajm5s0fpvww8" path="res://Audio/explosion.wav" id="7_7x3fb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_auegp"]
 animations = [{
@@ -105,3 +106,6 @@ explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_pfksv")
 lifetime = 1.5
 explosiveness = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7x3fb")
