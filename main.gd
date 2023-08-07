@@ -16,7 +16,6 @@ func _ready():
 
 func _process(_delta):
 	show_timer()
-	increase_difficulty()
 	
 	if $ShieldTimer.time_left < 5 and $ShieldTimer.time_left > 0:
 		$Player.lose_shield()
@@ -45,7 +44,7 @@ func new_game():
 
 func increase_difficulty():
 	if (score >= 9) and ((score % 10) == 0):
-		obs_velocity += 1.0
+		obs_velocity += 5.0
 		if $ObstacleTimer.wait_time > 1:
 			$ObstacleTimer.wait_time -= 0.2
 
@@ -87,6 +86,8 @@ func _on_start_timer_timeout():
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
+	increase_difficulty()
+	
 
 func set_item_type(t):
 	item_type = t
