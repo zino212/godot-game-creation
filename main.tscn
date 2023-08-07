@@ -140,6 +140,7 @@ script = ExtResource("1_e05ru")
 [node name="InfiniteScrollBackground" parent="." instance=ExtResource("2_4t157")]
 
 [node name="Player" parent="." instance=ExtResource("1_aso1r")]
+visible = false
 position = Vector2(152, 482)
 
 [node name="MissileShot" type="AnimatedSprite2D" parent="Player"]
@@ -187,7 +188,6 @@ wait_time = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(1.01, 1.01)
 script = ExtResource("20_egwdq")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
