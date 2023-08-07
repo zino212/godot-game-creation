@@ -208,6 +208,7 @@ script = ExtResource("1_e05ru")
 [node name="InfiniteScrollBackground" parent="." instance=ExtResource("2_4t157")]
 
 [node name="Player" parent="." instance=ExtResource("1_aso1r")]
+visible = false
 position = Vector2(152, 482)
 
 [node name="MissileShot" type="AnimatedSprite2D" parent="Player"]
