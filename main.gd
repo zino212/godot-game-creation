@@ -6,6 +6,8 @@ var lives
 var obstacle_scene = preload("res://obstacle.tscn")
 var obs_velocity
 
+var explosion_scene = preload("res://explosion.tscn")
+
 var item_scene = preload("res://item.tscn")
 var item_type
 var shield = false
@@ -102,6 +104,7 @@ func _on_player_hit(body):
 			add_life()
 	elif shield == false and $HurtTimer.time_left == 0:
 		$Player.blink()
+		$Camera2D.shake(.3,50,7)
 		check_for_lives()
 		$HurtTimer.start()
 
@@ -128,14 +131,15 @@ func check_for_lives():
 	if lives == 0:
 		game_over()
 
-func blink_player():
-	pass
-
 func game_over():
 	$ScoreTimer.stop()
 	$ObstacleTimer.stop()
 	$ItemTimer.stop()
 	$HurtTimer.stop()
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = $Player.position
+	add_child(explosion)
+	$Camera2D.shake(.3,50,7)
 	
 	get_tree().call_group("obstacles", "queue_free")
 	get_tree().call_group("items", "queue_free")
