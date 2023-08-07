@@ -96,6 +96,7 @@ func set_item_type(t):
 
 func _on_player_hit(body):
 	if "Item" in str(body):
+		$ItemAudio.play_audio(item_type)
 		if item_type == 0:
 			add_shield()
 		elif item_type == 1:
