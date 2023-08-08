@@ -84,6 +84,107 @@ animations = [{
 "duration": 0.5,
 "texture": ExtResource("12_51j17")
 }, {
+"duration": 0.5,
+"texture": ExtResource("13_vwldb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0uwqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rckhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3ylbl")
+}, {
+"duration": 40.0,
+"texture": ExtResource("15_aihe8")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"shot",
+"speed": 8.0
+}]
+[ext_resource type="Texture2D" uid="uid://cvb6awbcyli0q" path="res://MissileAnimation/Missile1.png" id="5_b6aq1"]
+[ext_resource type="Texture2D" uid="uid://c17pdgg3ate56" path="res://MissileAnimation/Missile2.png" id="6_ifqrf"]
+[ext_resource type="Texture2D" uid="uid://byx40m4orv1dq" path="res://MissileAnimation/Missile3.png" id="7_w2ujj"]
+[ext_resource type="Texture2D" uid="uid://dw2frtntqoin3" path="res://MissileAnimation/Missile4.png" id="8_x1jef"]
+[ext_resource type="Texture2D" uid="uid://ck1mfeu1sbtkv" path="res://MissileAnimation/Missile5.png" id="9_b4mex"]
+[ext_resource type="Texture2D" uid="uid://4cd7i5tg50i6" path="res://MissileAnimation/Missile6.png" id="10_crhpu"]
+[ext_resource type="Texture2D" uid="uid://c2ciwfb4jys6g" path="res://MissileAnimation/Missile7.png" id="11_ng8vf"]
+[ext_resource type="Texture2D" uid="uid://d216pdltlraeb" path="res://MissileAnimation/Missile10.png" id="12_0uwqt"]
+[ext_resource type="Texture2D" uid="uid://c0pypi570ekpl" path="res://MissileAnimation/Missile8.png" id="12_51j17"]
+[ext_resource type="Texture2D" uid="uid://dvd2ujo1v4pod" path="res://MissileAnimation/Missile11.png" id="13_rckhg"]
+[ext_resource type="Texture2D" uid="uid://csau33gu1u8xs" path="res://MissileAnimation/Missile9.png" id="13_vwldb"]
+[ext_resource type="Texture2D" uid="uid://di7ncc7532qld" path="res://MissileAnimation/Missile12.png" id="14_3ylbl"]
+[ext_resource type="Texture2D" uid="uid://dicbxoha14ecw" path="res://MissileAnimation/Missile13.png" id="15_aihe8"]
+[ext_resource type="Script" path="res://audioPlayer.gd" id="20_6ue2d"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="20_egwdq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8nhas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b6aq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ifqrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w2ujj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x1jef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b4mex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_crhpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ng8vf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_51j17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vwldb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0uwqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rckhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3ylbl")
+}, {
+"duration": 40.0,
+"texture": ExtResource("15_aihe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ifqrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w2ujj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x1jef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b4mex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_crhpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ng8vf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_51j17")
+}, {
 "duration": 1.0,
 "texture": ExtResource("13_vwldb")
 }, {
@@ -167,7 +268,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shot",
-"speed": 8.0
+"speed": 20.0
 }]
 [ext_resource type="Texture2D" uid="uid://cvb6awbcyli0q" path="res://MissileAnimation/Missile1.png" id="5_b6aq1"]
 [ext_resource type="Texture2D" uid="uid://c17pdgg3ate56" path="res://MissileAnimation/Missile2.png" id="6_ifqrf"]
@@ -182,32 +283,34 @@ animations = [{
 [ext_resource type="Texture2D" uid="uid://csau33gu1u8xs" path="res://MissileAnimation/Missile9.png" id="13_vwldb"]
 [ext_resource type="Texture2D" uid="uid://di7ncc7532qld" path="res://MissileAnimation/Missile12.png" id="14_3ylbl"]
 [ext_resource type="Texture2D" uid="uid://dicbxoha14ecw" path="res://MissileAnimation/Missile13.png" id="15_aihe8"]
+[ext_resource type="Script" path="res://audioPlayer.gd" id="20_6ue2d"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="20_egwdq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8nhas"]
 animations = [{
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("5_b6aq1")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("6_ifqrf")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("7_w2ujj")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("8_x1jef")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("9_b4mex")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("10_crhpu")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("11_ng8vf")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("12_51j17")
 }, {
 "duration": 1.0,
@@ -363,9 +466,6 @@ script = ExtResource("20_egwdq")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("20_6ue2d")
-
-[node name="ItemAudio" type="AudioStreamPlayer" parent="."]
-script = ExtResource("21_hrkuc")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="animation_finished" from="Player/MissileShot" to="." method="_on_missile_shot_animation_finished"]
