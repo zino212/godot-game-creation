@@ -262,6 +262,9 @@ script = ExtResource("20_egwdq")
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("20_6ue2d")
 
+[node name="ItemAudio" type="AudioStreamPlayer" parent="."]
+script = ExtResource("21_hrkuc")
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="animation_finished" from="Player/MissileShot" to="." method="_on_missile_shot_animation_finished"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
