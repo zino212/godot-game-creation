@@ -26,7 +26,6 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="Resolution_Selector" type="HBoxContainer" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Resolution_Selector"]

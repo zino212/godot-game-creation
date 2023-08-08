@@ -60,8 +60,8 @@ func _on_settings_apply_button_pressed(settings):
 	update_settings(settings)
 	
 func update_settings(settings: Dictionary) -> void:
-	
-	DisplayServer.window_set_size(settings.resolution)
+	if settings.resolution != Vector2(DisplayServer.window_get_size()):
+		DisplayServer.window_set_size(settings.resolution)
 	
 	if settings.fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
