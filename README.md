@@ -27,3 +27,6 @@
 - DONE: Add animation for getting hit
 - DONE: Add animation for shield
 - DONE: Add animation for missile
+- DONE: Add animation for game over
+- Add better animation for shield
+- Add better animation for missile
