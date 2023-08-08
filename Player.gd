@@ -51,10 +51,8 @@ func _process(delta):
 		velocity.y -= 250
 	
 	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, screen_size.y/2 + 60, screen_size.y - 30)
-
-	position.y = clamp(position.y, screen_size.y/2, screen_size.y - 100)
+	position.x = clamp(position.x, 80, screen_size.x - 80)
+	position.y = clamp(position.y, screen_size.y/2 + 100, screen_size.y - 40)
 
 func _on_body_entered(body):
 	body.hide()
