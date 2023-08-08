@@ -17,8 +17,8 @@
 ### Menu
 - DONE: Pause Game
 - DONE: Implement Settings
-- Make resolution work
-- Make graphics dynamic for resolution
+- DONE: Make resolution work
+- DONE: Make graphics dynamic for resolution
 ### Items
 - DONE: Implement shield mechanic
 - DONE: Implement missile mechanic
