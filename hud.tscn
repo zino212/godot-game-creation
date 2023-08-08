@@ -9,6 +9,15 @@ process_mode = 3
 script = ExtResource("1_brd2m")
 
 [node name="Health Bar" parent="." instance=ExtResource("2_u18ck")]
+visible = false
+
+[node name="Panel" type="Panel" parent="Health Bar"]
+show_behind_parent = true
+offset_left = -51.0
+offset_top = -21.0
+offset_right = -11.0
+offset_bottom = 19.0
+scale = Vector2(2.64, 1)
 
 [node name="ScoreLabel" type="Label" parent="."]
 visible = false
@@ -27,6 +36,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
+[node name="Panel" type="Panel" parent="ScoreLabel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -32.0
+offset_top = 27.0
+offset_right = 8.0
+offset_bottom = 67.0
+scale = Vector2(4.45271, 0.838568)
+
 [node name="Message" type="Label" parent="."]
 visible = false
 anchors_preset = 5
@@ -43,6 +61,15 @@ text = "Get ready!"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
+
+[node name="Panel" type="Panel" parent="Message"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 30.0
+offset_right = 59.0
+offset_bottom = 70.0
+scale = Vector2(6.81098, 1.2)
 
 [node name="Menu" type="Panel" parent="."]
 anchors_preset = 8
@@ -79,11 +106,13 @@ layout_mode = 2
 [node name="Resume_Button" type="Button" parent="Menu/VBoxContainer"]
 visible = false
 layout_mode = 2
+tooltip_text = "Resume your current Game"
 theme_override_font_sizes/font_size = 22
 text = "Resume"
 
 [node name="Start_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "Start a new Game"
 theme_override_font_sizes/font_size = 22
 text = "Start Game"
 
@@ -93,12 +122,14 @@ layout_mode = 2
 
 [node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "Configure Resolution and VSync"
 theme_override_font_sizes/font_size = 22
 text = "Settings"
 
 [node name="End_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+tooltip_text = "Quit the Game"
 theme_override_font_sizes/font_size = 22
 text = "End Game"
 
