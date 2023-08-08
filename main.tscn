@@ -24,53 +24,56 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_8nhas"]
 animations = [{
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("5_b6aq1")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("6_ifqrf")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("7_w2ujj")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("8_x1jef")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("9_b4mex")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("10_crhpu")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("11_ng8vf")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("12_51j17")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("13_vwldb")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("12_0uwqt")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("13_rckhg")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("14_3ylbl")
 }, {
-"duration": 0.5,
+"duration": 40.0,
 "texture": ExtResource("15_aihe8")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"shot",
-"speed": 8.0
+"speed": 20.0
 }]
 
 [sub_resource type="Curve2D" id="Curve2D_lkqsk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1152, 352, 0, 0, 0, 0, 1152, 576)
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 408, 0, 0, 0, 0, 1152, 632)
 }
 point_count = 2
 
@@ -84,11 +87,12 @@ visible = false
 position = Vector2(152, 482)
 
 [node name="MissileShot" type="AnimatedSprite2D" parent="Player"]
-visible = false
 position = Vector2(0, -1)
 scale = Vector2(0.39, 0.365)
 sprite_frames = SubResource("SpriteFrames_8nhas")
 animation = &"shot"
+frame = 13
+frame_progress = 1.0
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -109,7 +113,7 @@ wait_time = 3.0
 curve = SubResource("Curve2D_lkqsk")
 
 [node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
-position = Vector2(1152, 352)
+position = Vector2(1152, 408)
 rotation = 1.5708
 
 [node name="ItemTimer" type="Timer" parent="."]
