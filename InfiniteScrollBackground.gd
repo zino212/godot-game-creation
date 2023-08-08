@@ -1,9 +1,15 @@
 extends ParallaxBackground
 
-@export var speed = 100.0
+
+@export var velocity= 100.0
 
 @export var direction = Vector2.LEFT
 
+func _ready():
+	get_parent().get_parent().get_node("Main").connect("speed", _increase_speed)
+
 func _process(delta):
-	scroll_base_offset += (speed * direction) * delta
+	scroll_base_offset += (velocity * direction) * delta
 	
+func _increase_speed():
+	velocity+=5

@@ -13,6 +13,8 @@ var item_type
 var shield = false
 var missile = false
 
+signal speed
+
 func _ready():
 	pass
 
@@ -47,6 +49,7 @@ func new_game():
 func increase_difficulty():
 	if (score >= 9) and ((score % 10) == 0):
 		obs_velocity += 5.0
+		emit_signal("speed")
 		if $ObstacleTimer.wait_time > 1:
 			$ObstacleTimer.wait_time -= 0.2
 
