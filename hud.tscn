@@ -9,6 +9,15 @@ process_mode = 3
 script = ExtResource("1_brd2m")
 
 [node name="Health Bar" parent="." instance=ExtResource("2_u18ck")]
+visible = false
+
+[node name="Panel" type="Panel" parent="Health Bar"]
+show_behind_parent = true
+offset_left = -51.0
+offset_top = -21.0
+offset_right = -11.0
+offset_bottom = 19.0
+scale = Vector2(2.64, 1)
 
 [node name="Panel" type="Panel" parent="Health Bar"]
 show_behind_parent = true
