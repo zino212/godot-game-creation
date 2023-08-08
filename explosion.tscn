@@ -8,29 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://caoqgph4qgxq8" path="res://Explosion/Explosion4.png" id="6_tneo4"]
 [ext_resource type="AudioStream" uid="uid://cajm5s0fpvww8" path="res://Audio/explosion.wav" id="7_7x3fb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_auegp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_ktxb1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_3863u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_dxxvc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_tneo4")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"Explosion",
-"speed": 20.0
-}]
-
 [sub_resource type="Gradient" id="Gradient_o6rdm"]
 offsets = PackedFloat32Array(0.0550847, 0.161017, 0.256356, 0.375, 0.698492, 0.964824)
 colors = PackedColorArray(1, 1, 1, 1, 0.855459, 0.624538, 0.326212, 1, 0.788235, 0.509804, 0.0352941, 1, 0.44158, 0.430071, 0.45265, 1, 0.227166, 0.219836, 0.234201, 1, 0.298039, 0.286275, 0.305882, 0)
