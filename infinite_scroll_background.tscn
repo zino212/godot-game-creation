@@ -11,6 +11,5 @@ motion_mirroring = Vector2(1152, 650)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 texture_repeat = 2
-position = Vector2(4, 0)
-texture = ExtResource("2_6e12b")
+texture = ExtResource("2_wwdu4")
 centered = false
