@@ -53,8 +53,11 @@ func increase_difficulty():
 func show_timer():
 	if ($StartTimer.time_left <= 4) and not ($StartTimer.time_left < 1):
 		$HUD.show_message(str(int($StartTimer.time_left)))
-	elif ($StartTimer.time_left < 1) and not ($ScoreTimer.is_stopped()):
+	if ($StartTimer.time_left < 1) and ($StartTimer.time_left > 0):
+		$HUD.show_message("Go!")
+	elif not ($ScoreTimer.is_stopped()):
 		$HUD.show_message("")
+		$HUD.hide_message()
 	
 
 func _on_obstacle_timer_timeout():

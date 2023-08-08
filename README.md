@@ -30,3 +30,5 @@
 - DONE: Add animation for game over
 - Add better animation for shield
 - Add better animation for missile
+### General
+- Restructure project
