@@ -96,7 +96,7 @@ func set_item_type(t):
 
 func _on_player_hit(body):
 	if "Item" in str(body):
-		$ItemAudio.play_audio(item_type)
+		$AudioPlayer.play_item_audio(item_type)
 		if item_type == 0:
 			add_shield()
 		elif item_type == 1:
@@ -132,7 +132,7 @@ func check_for_lives():
 	if lives == 0:
 		game_over()
 	else:
-		$HurtAudio.play()
+		$AudioPlayer.play_hurt_audio()
 
 func game_over():
 	$ScoreTimer.stop()
@@ -158,16 +158,15 @@ func _on_item_timer_timeout():
 	item_spawn_location.progress_ratio = randf()
 
 	var direction = item_spawn_location.rotation + PI / 2
-
+	add_child(item)
 	item.position = item_spawn_location.position
 
 	item.rotation = direction
-
+	
 	var velocity = Vector2(obs_velocity, 0.0)
 	item.linear_velocity = velocity.rotated(direction)
-	add_child(item)
+	
 	item_type = item.get_item_type()
-
 
 func _on_shield_timer_timeout():
 	shield = false
