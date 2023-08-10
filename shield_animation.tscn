@@ -1,0 +1,186 @@
+[gd_scene load_steps=25 format=3 uid="uid://bbyqbcp5smlm6"]
+
+[ext_resource type="Texture2D" uid="uid://v1sftdj0omgc" path="res://ShieldAnimations/Shield_active.png" id="1_0dv6s"]
+[ext_resource type="Texture2D" uid="uid://dcjtcua73p4ap" path="res://ShieldAnimations/Idle/Shield_Idle_0.png" id="1_ejm7c"]
+[ext_resource type="Texture2D" uid="uid://bo332clya3fy0" path="res://ShieldAnimations/Idle/Shield_Idle_1.png" id="2_505if"]
+[ext_resource type="Texture2D" uid="uid://d0nlchogivdbn" path="res://ShieldAnimations/Idle/Shield_Idle_2.png" id="3_sbccf"]
+[ext_resource type="Texture2D" uid="uid://btknjvr8kpp5s" path="res://ShieldAnimations/Idle/Shield_Idle_3.png" id="4_i1qyv"]
+[ext_resource type="Texture2D" uid="uid://1jho7hyekjvm" path="res://ShieldAnimations/Idle/Shield_Idle_4.png" id="5_xccvp"]
+[ext_resource type="Texture2D" uid="uid://ch3pp8jc2bcpj" path="res://ShieldAnimations/Idle/Shield_Idle_5.png" id="6_5kimk"]
+[ext_resource type="Texture2D" uid="uid://cwcjbmh70xdb7" path="res://ShieldAnimations/Idle/Shield_Idle_6.png" id="7_4oqvk"]
+[ext_resource type="Texture2D" uid="uid://bb266kf2f0epq" path="res://ShieldAnimations/Idle/Shield_Idle_7.png" id="8_26gx4"]
+[ext_resource type="Texture2D" uid="uid://gydqwicdia6c" path="res://ShieldAnimations/Idle/Shield_Idle_8.png" id="9_llj1w"]
+[ext_resource type="Texture2D" uid="uid://ci8c172rfjm3q" path="res://ShieldAnimations/Startup/Shield_Startup_11.png" id="10_0eoci"]
+[ext_resource type="Texture2D" uid="uid://b5dos1oljphb4" path="res://ShieldAnimations/Startup/Shield_Startup_10.png" id="11_wf2ei"]
+[ext_resource type="Texture2D" uid="uid://nps2vfl3qjmo" path="res://ShieldAnimations/Startup/Shield_Startup_9.png" id="12_umhsf"]
+[ext_resource type="Texture2D" uid="uid://ddm4iymtrjh1w" path="res://ShieldAnimations/Startup/Shield_Startup_8.png" id="13_yx22i"]
+[ext_resource type="Texture2D" uid="uid://bpxh4b74qsdvk" path="res://ShieldAnimations/Startup/Shield_Startup_7.png" id="14_hsv5t"]
+[ext_resource type="Texture2D" uid="uid://fkd3nolrqbef" path="res://ShieldAnimations/Startup/Shield_Startup_6.png" id="15_wmcjq"]
+[ext_resource type="Texture2D" uid="uid://b8v7151yg0iyc" path="res://ShieldAnimations/Startup/Shield_Startup_5.png" id="16_vqar2"]
+[ext_resource type="Texture2D" uid="uid://qrggb7qbmd0b" path="res://ShieldAnimations/Startup/Shield_Startup_4.png" id="17_1mq3p"]
+[ext_resource type="Texture2D" uid="uid://dffxhed0wgix8" path="res://ShieldAnimations/Startup/Shield_Startup_3.png" id="18_x4wf6"]
+[ext_resource type="Texture2D" uid="uid://dsmxv2e04eiw3" path="res://ShieldAnimations/Startup/Shield_Startup_2.png" id="19_emdiu"]
+[ext_resource type="Texture2D" uid="uid://du5c2wpiw5q0x" path="res://ShieldAnimations/Startup/Shield_Startup_1.png" id="20_h4rb6"]
+[ext_resource type="Texture2D" uid="uid://bxfcaiqnabi4l" path="res://ShieldAnimations/Startup/Shield_Startup_0.png" id="21_j21vt"]
+[ext_resource type="Script" path="res://shield_animation.gd" id="22_flb2c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3j6v"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 25.0,
+"texture": ExtResource("1_0dv6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ejm7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_505if")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sbccf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i1qyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xccvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5kimk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4oqvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_26gx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_llj1w")
+}, {
+"duration": 25.0,
+"texture": ExtResource("1_0dv6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_llj1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_26gx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4oqvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5kimk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xccvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i1qyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sbccf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_505if")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ejm7c")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("10_0eoci")
+}, {
+"duration": 3.0,
+"texture": ExtResource("11_wf2ei")
+}, {
+"duration": 3.0,
+"texture": ExtResource("12_umhsf")
+}, {
+"duration": 3.0,
+"texture": ExtResource("13_yx22i")
+}, {
+"duration": 3.0,
+"texture": ExtResource("14_hsv5t")
+}, {
+"duration": 3.0,
+"texture": ExtResource("15_wmcjq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_vqar2")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_1mq3p")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_x4wf6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("19_emdiu")
+}, {
+"duration": 3.0,
+"texture": ExtResource("20_h4rb6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("21_j21vt")
+}],
+"loop": false,
+"name": &"Shutdown",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_j21vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_h4rb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_emdiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_x4wf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1mq3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vqar2")
+}, {
+"duration": 3.0,
+"texture": ExtResource("15_wmcjq")
+}, {
+"duration": 3.0,
+"texture": ExtResource("14_hsv5t")
+}, {
+"duration": 3.0,
+"texture": ExtResource("13_yx22i")
+}, {
+"duration": 3.0,
+"texture": ExtResource("12_umhsf")
+}, {
+"duration": 3.0,
+"texture": ExtResource("11_wf2ei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0eoci")
+}],
+"loop": false,
+"name": &"Startup",
+"speed": 11.0
+}]
+
+[node name="ShieldAnimation" type="AnimatedSprite2D"]
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_v3j6v")
+animation = &"Startup"
+script = ExtResource("22_flb2c")

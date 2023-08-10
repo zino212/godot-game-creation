@@ -20,7 +20,7 @@ func _process(_delta):
 	show_timer()
 	
 	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
-		$Player.lose_shield()
+		$Player/ShieldAnimation.shutdown()
 
 func new_game():
 	
@@ -29,6 +29,9 @@ func new_game():
 	$ScoreTimer.stop()
 	
 	shield = false
+	$Player/ShieldAnimation.hide()
+	$Player/ShieldAnimation.reset()
+	
 	score = 0
 	lives = 3
 	obs_velocity = 150.0
@@ -115,7 +118,8 @@ func _on_player_hit(body):
 func add_shield():
 	shield = true
 	$ShieldTimer.start()
-	$Player.shield()
+	$Player/ShieldAnimation.show()
+	$Player/ShieldAnimation.startup()
 
 func add_missile():
 	missile = true
@@ -173,7 +177,7 @@ func _on_item_timer_timeout():
 
 func _on_shield_timer_timeout():
 	shield = false
-	$Player.normal_animation()
+	$Player/ShieldAnimation.hide()
 
 
 func _on_hurt_timer_timeout():
