@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dl7xqsyiouaa7"]
 
-[ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Scenes/Player.tscn" id="1_aso1r"]
+[ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Scenes/Scenes/Player.tscn" id="1_aso1r"]
 [ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
 [ext_resource type="PackedScene" uid="uid://1i6oiybm5hxy" path="res://Scenes/infinite_scroll_background.tscn" id="2_4t157"]
 [ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://Scenes/enemy.tscn" id="2_7x332"]
@@ -91,7 +91,7 @@ animations = [{
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="20_3w82x"]
 [ext_resource type="Script" path="res://Scripts/audioPlayer.gd" id="21_cbgdv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8nhas"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_680gv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -130,11 +130,8 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_3ylbl")
 }, {
-"duration": 40.0,
-"texture": ExtResource("15_aihe8")
-}, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("15_aihe8")
 }],
 "loop": false,
 "name": &"shot",
