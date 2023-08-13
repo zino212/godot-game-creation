@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dsmxv2e04eiw3" path="res://ShieldAnimations/Startup/Shield_Startup_2.png" id="19_emdiu"]
 [ext_resource type="Texture2D" uid="uid://du5c2wpiw5q0x" path="res://ShieldAnimations/Startup/Shield_Startup_1.png" id="20_h4rb6"]
 [ext_resource type="Texture2D" uid="uid://bxfcaiqnabi4l" path="res://ShieldAnimations/Startup/Shield_Startup_0.png" id="21_j21vt"]
-[ext_resource type="Script" path="res://shield_animation.gd" id="22_flb2c"]
+[ext_resource type="Script" path="res://Scripts/shield_animation.gd" id="22_flb2c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3j6v"]
 animations = [{

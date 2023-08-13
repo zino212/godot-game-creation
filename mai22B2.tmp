@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://dl7xqsyiouaa7"]
+
+[ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Scenes/Player.tscn" id="1_aso1r"]
+[ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
+[ext_resource type="PackedScene" uid="uid://1i6oiybm5hxy" path="res://Scenes/infinite_scroll_background.tscn" id="2_4t157"]
+[ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://Scenes/enemy.tscn" id="2_7x332"]
+[ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://Scenes/hud.tscn" id="3_d3w67"]
+[ext_resource type="PackedScene" uid="uid://bbyqbcp5smlm6" path="res://Scenes/shield_animation.tscn" id="4_5xcrk"]
+[ext_resource type="PackedScene" uid="uid://colo8fjls8kgr" path="res://Scenes/explosion.tscn" id="4_he11y"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="20_3w82x"]
+[ext_resource type="Script" path="res://Scripts/audioPlayer.gd" id="21_cbgdv"]
+
+[sub_resource type="Curve2D" id="Curve2D_lkqsk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 408, 0, 0, 0, 0, 1152, 632)
+}
+point_count = 2
+
+[node name="Main" type="Node"]
+script = ExtResource("1_e05ru")
+
+[node name="InfiniteScrollBackground2" parent="." instance=ExtResource("2_4t157")]
+
+[node name="Player" parent="." instance=ExtResource("1_aso1r")]
+visible = false
+
+[node name="Explosion" parent="Player" instance=ExtResource("4_he11y")]
+visible = false
+
+[node name="ShieldAnimation" parent="Player" instance=ExtResource("4_5xcrk")]
+visible = false
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="Enemy" parent="." instance=ExtResource("2_7x332")]
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource("3_d3w67")]
+visible = false
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ObstaclePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_lkqsk")
+
+[node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
+position = Vector2(1152, 408)
+rotation = 1.5708
+
+[node name="ItemTimer" type="Timer" parent="."]
+wait_time = 25.0
+
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="HurtTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="MissileTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("20_3w82x")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("21_cbgdv")
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
+[connection signal="timeout" from="MissileTimer" to="." method="_on_missile_timer_timeout"]

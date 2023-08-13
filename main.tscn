@@ -1,11 +1,11 @@
 [gd_scene load_steps=24 format=3 uid="uid://dl7xqsyiouaa7"]
 
-[ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Player.tscn" id="1_aso1r"]
+[ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Scenes/Player.tscn" id="1_aso1r"]
 [ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
-[ext_resource type="PackedScene" uid="uid://1i6oiybm5hxy" path="res://infinite_scroll_background.tscn" id="2_4t157"]
-[ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://enemy.tscn" id="2_7x332"]
-[ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://hud.tscn" id="3_d3w67"]
-[ext_resource type="PackedScene" uid="uid://bbyqbcp5smlm6" path="res://shield_animation.tscn" id="4_5xcrk"]
+[ext_resource type="PackedScene" uid="uid://1i6oiybm5hxy" path="res://Scenes/infinite_scroll_background.tscn" id="2_4t157"]
+[ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://Scenes/enemy.tscn" id="2_7x332"]
+[ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://Scenes/hud.tscn" id="3_d3w67"]
+[ext_resource type="PackedScene" uid="uid://bbyqbcp5smlm6" path="res://Scenes/shield_animation.tscn" id="4_5xcrk"]
 [ext_resource type="Texture2D" uid="uid://cvb6awbcyli0q" path="res://MissileAnimation/Missile1.png" id="5_b6aq1"]
 [ext_resource type="Texture2D" uid="uid://c17pdgg3ate56" path="res://MissileAnimation/Missile2.png" id="6_ifqrf"]
 [ext_resource type="Texture2D" uid="uid://byx40m4orv1dq" path="res://MissileAnimation/Missile3.png" id="7_w2ujj"]
@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="20_3w82x"]
 [ext_resource type="Script" path="res://Scripts/audioPlayer.gd" id="21_cbgdv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8nhas"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_680gv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -61,11 +61,8 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_3ylbl")
 }, {
-"duration": 40.0,
-"texture": ExtResource("15_aihe8")
-}, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("15_aihe8")
 }],
 "loop": false,
 "name": &"shot",
@@ -85,18 +82,15 @@ script = ExtResource("1_e05ru")
 
 [node name="Player" parent="." instance=ExtResource("1_aso1r")]
 visible = false
-position = Vector2(152, 482)
 
 [node name="ShieldAnimation" parent="Player" instance=ExtResource("4_5xcrk")]
 visible = false
 
 [node name="MissileShot" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(0, -1)
-scale = Vector2(0.39, 0.365)
-sprite_frames = SubResource("SpriteFrames_8nhas")
+visible = false
+scale = Vector2(0.38, 0.38)
+sprite_frames = SubResource("SpriteFrames_680gv")
 animation = &"shot"
-frame = 13
-frame_progress = 1.0
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 5.0

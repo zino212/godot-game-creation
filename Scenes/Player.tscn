@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dv0p0cj8x48h3"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_cm5wk"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_cm5wk"]
 [ext_resource type="Texture2D" uid="uid://c3uhrc7fxdly6" path="res://Images/Player.png" id="2_x83on"]
 [ext_resource type="Texture2D" uid="uid://mt342oyfvoe" path="res://Images/Player_Hurt.png" id="3_tqdl4"]
 
