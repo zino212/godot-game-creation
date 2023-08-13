@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsku5142jc40t"
-path="res://.godot/imported/shield.svg-aad55dd538917aa89aefd819a0567dfa.ctex"
+uid="uid://csg46ufemmqdv"
+path="res://.godot/imported/Lives1.png-3a2c74d5f367b2d3b7fece1da71a2b38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shield.svg"
-dest_files=["res://.godot/imported/shield.svg-aad55dd538917aa89aefd819a0567dfa.ctex"]
+source_file="res://Images/Lives1.png"
+dest_files=["res://.godot/imported/Lives1.png-3a2c74d5f367b2d3b7fece1da71a2b38.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
