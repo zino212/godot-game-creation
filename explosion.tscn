@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://colo8fjls8kgr"]
 
-[ext_resource type="Script" path="res://MissileShot.gd" id="1_3symp"]
+[ext_resource type="Script" path="res://Scripts/MissileShot.gd" id="1_3symp"]
 [ext_resource type="Texture2D" uid="uid://dwthxdls86a02" path="res://Explosion/dust.png" id="2_0d7t3"]
 [ext_resource type="Texture2D" uid="uid://chx83lsdh6p6g" path="res://Explosion/Explosion1.png" id="3_ktxb1"]
 [ext_resource type="Texture2D" uid="uid://nyl3cu5xxsn7" path="res://Explosion/Explosion2.png" id="4_3863u"]

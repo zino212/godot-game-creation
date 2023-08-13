@@ -19,8 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://csau33gu1u8xs" path="res://MissileAnimation/Missile9.png" id="13_vwldb"]
 [ext_resource type="Texture2D" uid="uid://di7ncc7532qld" path="res://MissileAnimation/Missile12.png" id="14_3ylbl"]
 [ext_resource type="Texture2D" uid="uid://dicbxoha14ecw" path="res://MissileAnimation/Missile13.png" id="15_aihe8"]
-[ext_resource type="Script" path="res://audioPlayer.gd" id="20_6ue2d"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="20_egwdq"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="20_3w82x"]
+[ext_resource type="Script" path="res://Scripts/audioPlayer.gd" id="21_cbgdv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8nhas"]
 animations = [{
@@ -136,10 +136,10 @@ wait_time = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-script = ExtResource("20_egwdq")
+script = ExtResource("20_3w82x")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("20_6ue2d")
+script = ExtResource("21_cbgdv")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="animation_finished" from="Player/MissileShot" to="." method="_on_missile_shot_animation_finished"]
