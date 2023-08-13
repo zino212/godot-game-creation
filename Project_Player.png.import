@@ -2,6 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 <<<<<<<< HEAD:Images/Player.png.import
 uid="uid://c3uhrc7fxdly6"
 path="res://.godot/imported/Player.png-0314ab6544fe784a0f33fad426327b55.ctex"
@@ -9,12 +10,22 @@ path="res://.godot/imported/Player.png-0314ab6544fe784a0f33fad426327b55.ctex"
 uid="uid://bvsjuaql60xyj"
 path="res://.godot/imported/Project_Player.png-4532a317c92e08fe521279de71fc6320.ctex"
 >>>>>>>> refs/rewritten/zino212-ReyProj2:Project_Player.png.import
+=======
+<<<<<<<< HEAD:Project_Player.png.import
+uid="uid://bvsjuaql60xyj"
+path="res://.godot/imported/Project_Player.png-4532a317c92e08fe521279de71fc6320.ctex"
+========
+uid="uid://c3uhrc7fxdly6"
+path="res://.godot/imported/Player.png-0314ab6544fe784a0f33fad426327b55.ctex"
+>>>>>>>> f65a6fb (Move last images):Images/Player.png.import
+>>>>>>> 12e8437 (Move last images)
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD
 <<<<<<<< HEAD:Images/Player.png.import
 source_file="res://Images/Player.png"
 dest_files=["res://.godot/imported/Player.png-0314ab6544fe784a0f33fad426327b55.ctex"]
@@ -22,6 +33,15 @@ dest_files=["res://.godot/imported/Player.png-0314ab6544fe784a0f33fad426327b55.c
 source_file="res://Project_Player.png"
 dest_files=["res://.godot/imported/Project_Player.png-4532a317c92e08fe521279de71fc6320.ctex"]
 >>>>>>>> refs/rewritten/zino212-ReyProj2:Project_Player.png.import
+=======
+<<<<<<<< HEAD:Project_Player.png.import
+source_file="res://Project_Player.png"
+dest_files=["res://.godot/imported/Project_Player.png-4532a317c92e08fe521279de71fc6320.ctex"]
+========
+source_file="res://Images/Player.png"
+dest_files=["res://.godot/imported/Player.png-0314ab6544fe784a0f33fad426327b55.ctex"]
+>>>>>>>> f65a6fb (Move last images):Images/Player.png.import
+>>>>>>> 12e8437 (Move last images)
 
 [params]
 
