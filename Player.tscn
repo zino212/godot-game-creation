@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv0p0cj8x48h3"]
+[gd_scene load_steps=6 format=3 uid="uid://dv0p0cj8x48h3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_cm5wk"]
-[ext_resource type="Texture2D" uid="uid://c3uhrc7fxdly6" path="res://Project_Player1.png" id="2_exg3n"]
-[ext_resource type="Texture2D" uid="uid://mt342oyfvoe" path="res://Project_Player_Hurt.png" id="3_kkkat"]
-[ext_resource type="Texture2D" uid="uid://doqt3l375phpf" path="res://Project_Player_Shield.png" id="4_pll46"]
+[ext_resource type="Texture2D" uid="uid://c3uhrc7fxdly6" path="res://Images/Player.png" id="2_x83on"]
+[ext_resource type="Texture2D" uid="uid://mt342oyfvoe" path="res://Images/Player_Hurt.png" id="3_tqdl4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wd45h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_exg3n")
+"texture": ExtResource("2_x83on")
 }],
 "loop": true,
 "name": &"default",
@@ -17,33 +16,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_exg3n")
+"texture": ExtResource("2_x83on")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_kkkat")
+"texture": ExtResource("3_tqdl4")
 }],
 "loop": true,
 "name": &"hurt",
 "speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_exg3n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_pll46")
-}],
-"loop": true,
-"name": &"lose_shield",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_pll46")
-}],
-"loop": true,
-"name": &"shield",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6g4q3"]

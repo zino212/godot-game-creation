@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://np4rkbfliyye"
-path="res://.godot/imported/boulder.png-1d830d31c99f24811af064939b7fdd20.ctex"
+uid="uid://bjqlh33vmlh60"
+path="res://.godot/imported/boulder_mirrored.png-682628d343e1bac880f54e4564c914d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boulder.png"
-dest_files=["res://.godot/imported/boulder.png-1d830d31c99f24811af064939b7fdd20.ctex"]
+source_file="res://Images/boulder_mirrored.png"
+dest_files=["res://.godot/imported/boulder_mirrored.png-682628d343e1bac880f54e4564c914d4.ctex"]
 
 [params]
 
