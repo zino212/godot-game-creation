@@ -107,10 +107,10 @@ visible = false
 [node name="ObstacleTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="ObstaclePath" type="Path2D" parent="."]
+[node name="ObjectPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_lkqsk")
 
-[node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
+[node name="ObjectSpawnLocation" type="PathFollow2D" parent="ObjectPath"]
 position = Vector2(1152, 408)
 rotation = 1.5708
 

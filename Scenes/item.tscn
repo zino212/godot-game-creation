@@ -11,7 +11,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_onqv1"]
 radius = 17.0
 
-[node name="Item" type="RigidBody2D"]
+[node name="Item" type="RigidBody2D" groups=["objects"]]
 collision_mask = 0
 mass = 0.01
 gravity_scale = 0.0

@@ -38,8 +38,7 @@ func new_game():
 	$ObstacleTimer.wait_time = 3
 	$ItemTimer.wait_time = 10
 	
-	get_tree().call_group("obstacles", "queue_free")
-	get_tree().call_group("items", "queue_free")
+	get_tree().call_group("objects", "queue_free")
 	
 	$HUD.update_score(score)
 	$HUD.update_lives(lives)
@@ -71,7 +70,7 @@ func _on_obstacle_timer_timeout():
 func spawn_obstacle():
 	var obstacle = obstacle_scene.instantiate()
 
-	var obstacle_spawn_location = get_node("ObstaclePath/ObstacleSpawnLocation")
+	var obstacle_spawn_location = get_node("ObjectPath/ObjectSpawnLocation")
 	obstacle_spawn_location.progress_ratio = randf()
 
 	var direction = obstacle_spawn_location.rotation + PI / 2
@@ -151,8 +150,7 @@ func game_over():
 	add_child(explosion)
 	$Camera2D.shake(.3,50,7)
 	
-	get_tree().call_group("obstacles", "queue_free")
-	get_tree().call_group("items", "queue_free")
+	get_tree().call_group("objects", "queue_free")
 	
 	$HUD.show_game_over()
 	$Player.hide()
@@ -161,7 +159,7 @@ func game_over():
 func _on_item_timer_timeout():
 	var item = item_scene.instantiate()
 
-	var item_spawn_location = get_node("ObstaclePath/ObstacleSpawnLocation")
+	var item_spawn_location = get_node("ObjectPath/ObjectSpawnLocation")
 	item_spawn_location.progress_ratio = randf()
 
 	var direction = item_spawn_location.rotation + PI / 2
