@@ -12,7 +12,7 @@
 - Obstacles -> ?
 - DONE: Background
 - DONE: Lives
-- Items -> L
+- DONE: Items
 ### Menu
 - DONE: Pause Game
 - DONE: Implement Settings
@@ -28,6 +28,7 @@
 - DONE: Add animation for missile
 - DONE: Add animation for game over
 - DONE: Add better animation for shield
+- Add animations for player -> R
 - Add better animation for missile -> L
 ### General
 - Restructure project

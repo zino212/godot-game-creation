@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://l0xqpwyacq78"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_hygqk"]
-[ext_resource type="Texture2D" uid="uid://bsku5142jc40t" path="res://shield.svg" id="2_p8dgv"]
-[ext_resource type="Texture2D" uid="uid://cwove0lumqbkc" path="res://missile.svg" id="3_ei17f"]
-[ext_resource type="Texture2D" uid="uid://csg46ufemmqdv" path="res://Lives1.png" id="4_l7as3"]
+[ext_resource type="Texture2D" uid="uid://cjrcr2afqqieb" path="res://Images/Shield_Item.png" id="2_ry5hf"]
+[ext_resource type="Texture2D" uid="uid://jp2vbuxhus2g" path="res://Images/Missile_Item.png" id="3_kanla"]
+[ext_resource type="Texture2D" uid="uid://csg46ufemmqdv" path="res://Images/Lives1.png" id="4_o8oqm"]
 [ext_resource type="AudioStream" uid="uid://gioxdmoovpfi" path="res://Audio/powerUp.wav" id="5_ckyxb"]
 [ext_resource type="AudioStream" uid="uid://7l6sxfauihhc" path="res://Audio/laserShoot.wav" id="6_41i5f"]
 [ext_resource type="AudioStream" uid="uid://dmf1jhj8ucd7v" path="res://Audio/lifeUp.wav" id="7_ehd1w"]
@@ -20,23 +20,24 @@ script = ExtResource("1_hygqk")
 
 [node name="ShieldSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-9.53674e-07, -5.96046e-08)
+position = Vector2(2, -4)
 rotation = 3.14159
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_p8dgv")
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("2_ry5hf")
 
 [node name="MissileSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-1, 2)
+position = Vector2(3, -6)
 rotation = 3.14159
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("3_ei17f")
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("3_kanla")
 
 [node name="HeartSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-41, -5)
 rotation = -3.14159
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("4_l7as3")
+texture = ExtResource("4_o8oqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_onqv1")
