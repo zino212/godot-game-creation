@@ -87,3 +87,12 @@ func show_game_over():
 
 func _on_end_button_pressed():
 	get_tree().quit()
+
+func show_controls():
+	$Menu.visible = false
+	$Controls.visible = true
+
+
+func _on_back_button_pressed():
+	$Controls.visible = false
+	$Menu.visible = true

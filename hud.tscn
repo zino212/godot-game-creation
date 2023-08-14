@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl7ovft0dcrrw"]
+[gd_scene load_steps=8 format=3 uid="uid://bl7ovft0dcrrw"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_brd2m"]
 [ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://settings.tscn" id="2_i4188"]
 [ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://health_bar.tscn" id="2_u18ck"]
 [ext_resource type="FontFile" uid="uid://bqbm3yqyiicvv" path="res://cyberway-riders-font/CyberwayRiders-lg97d.ttf" id="3_qv03x"]
+[ext_resource type="Texture2D" uid="uid://dyjfh6jcon4xx" path="res://Images/Lives1_small.png" id="5_rtfv0"]
+[ext_resource type="Texture2D" uid="uid://cxr2wq6txhmsf" path="res://Images/Shield_Item_small.png" id="6_1y857"]
+[ext_resource type="Texture2D" uid="uid://b17you8lg7t1v" path="res://Images/Missile_Item_small.png" id="7_j865e"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -126,6 +129,13 @@ text = "Start Game"
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
+[node name="Controls_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Configure Resolution and VSync"
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 22
+text = "Controls"
+
 [node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Configure Resolution and VSync"
@@ -158,8 +168,155 @@ grow_vertical = 2
 [node name="MessageTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Controls" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.5
+offset_top = -237.5
+offset_right = 275.5
+offset_bottom = 237.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.5
+offset_top = 12.0
+offset_right = 266.5
+offset_bottom = 444.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Movement" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Use W/A/S/D or the Arrow Keys for moving
+the motorcyclist and evading incoming obstacles."
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Items" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pickup the Items displayed below for special powers."
+horizontal_alignment = 1
+
+[node name="ItemPictures" type="HBoxContainer" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="Heart" type="Sprite2D" parent="Controls/VBoxContainer/ItemPictures"]
+position = Vector2(89, 30)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_rtfv0")
+
+[node name="Shield" type="Sprite2D" parent="Controls/VBoxContainer/ItemPictures"]
+position = Vector2(272, 30)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_1y857")
+
+[node name="Missile" type="Sprite2D" parent="Controls/VBoxContainer/ItemPictures"]
+position = Vector2(447, 30)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_j865e")
+
+[node name="ItemNames" type="HBoxContainer" parent="Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Heart" type="Label" parent="Controls/VBoxContainer/ItemNames"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Extra Life"
+horizontal_alignment = 1
+
+[node name="Shield" type="Label" parent="Controls/VBoxContainer/ItemNames"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Shield
+"
+horizontal_alignment = 1
+
+[node name="Missile" type="Label" parent="Controls/VBoxContainer/ItemNames"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pulse"
+horizontal_alignment = 1
+
+[node name="ExplanationTexts" type="HBoxContainer" parent="Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="Heart" type="Label" parent="Controls/VBoxContainer/ExplanationTexts"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Regenerate one of your 3 lives."
+horizontal_alignment = 1
+
+[node name="Shield" type="Label" parent="Controls/VBoxContainer/ExplanationTexts"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Get a shield for protecting
+you a few seconds.
+"
+horizontal_alignment = 1
+
+[node name="Missile" type="Label" parent="Controls/VBoxContainer/ExplanationTexts"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Get one of three pulses to destroy
+all obstacles for a few seconds."
+horizontal_alignment = 1
+
+[node name="HSeparator6" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Missile" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Use the SPACE-Key for firing a pulse."
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Back_Button" type="Button" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 22
+text = "Back"
+
 [connection signal="pressed" from="Menu/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Controls_Button" to="." method="show_controls"]
 [connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]
 [connection signal="pressed" from="Menu/VBoxContainer/End_Button" to="." method="_on_end_button_pressed"]
 [connection signal="apply_button_pressed" from="Settings" to="." method="_on_settings_apply_button_pressed"]
+[connection signal="pressed" from="Controls/VBoxContainer/Back_Button" to="." method="_on_back_button_pressed"]
