@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0dtk3et5b0u5"]
+[gd_scene load_steps=3 format=3 uid="uid://d0dtk3et5b0u5"]
 
 [ext_resource type="Script" path="res://settings.gd" id="1_wiu41"]
+[ext_resource type="FontFile" uid="uid://bqbm3yqyiicvv" path="res://cyberway-riders-font/CyberwayRiders-lg97d.ttf" id="2_hmfno"]
 
 [node name="Settings" type="Panel"]
-offset_right = 562.0
-offset_bottom = 357.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = -275.0
+offset_right = 281.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_wiu41")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -15,14 +25,117 @@ offset_top = 35.0
 offset_right = 517.0
 offset_bottom = 316.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("2_hmfno")
+theme_override_font_sizes/font_size = 30
 text = "Settings"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Difficulty" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_hmfno")
+theme_override_font_sizes/font_size = 25
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Difficulty_Selector" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Difficulty_Selector"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Difficulty Multiplier"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Difficulty_Selector"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+item_count = 3
+selected = 1
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+
+[node name="Item_Selector" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Item_Selector"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Item Spawn Rate"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Item_Selector"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+item_count = 3
+selected = 1
+popup/item_0/text = "Frequent"
+popup/item_0/id = 0
+popup/item_1/text = "Normal"
+popup/item_1/id = 1
+popup/item_2/text = "Rare"
+popup/item_2/id = 2
+
+[node name="Missile_Selector" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Missile_Selector"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 19
+text = "Number of Starting Pulses"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Missile_Selector"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+item_count = 3
+selected = 2
+popup/item_0/text = "0"
+popup/item_0/id = 0
+popup/item_1/text = "1"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="General" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_hmfno")
+theme_override_font_sizes/font_size = 25
+text = "General Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="Resolution_Selector" type="HBoxContainer" parent="VBoxContainer"]
@@ -82,10 +195,8 @@ layout_mode = 2
 
 [node name="Apply_Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_hmfno")
+theme_override_font_sizes/font_size = 25
 text = "Apply"
 
-[connection signal="item_selected" from="VBoxContainer/Resolution_Selector/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="toggled" from="VBoxContainer/Fullscreen_Selector/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
-[connection signal="toggled" from="VBoxContainer/Vsync_Selector/VsyncCheckBox" to="." method="_on_vsync_check_box_toggled"]
 [connection signal="pressed" from="VBoxContainer/Apply_Button" to="." method="_on_apply_button_pressed"]

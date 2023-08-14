@@ -6,14 +6,16 @@ var lives
 var obstacle_scene = preload("res://obstacle.tscn")
 var obs_velocity
 
+var velocity_multiplier = 5
+var item_interval = 15
+var missile_storage = 3
+
 var explosion_scene = preload("res://explosion.tscn")
 
 var item_scene = preload("res://item.tscn")
 var item_type
 var shield = false
 var missile = false
-
-signal speed
 
 func _ready():
 	pass
@@ -36,9 +38,9 @@ func new_game():
 	
 	score = 0
 	lives = 3
-	obs_velocity = 150.0
+	obs_velocity = 100.0
 	$ObstacleTimer.wait_time = 3
-	$ItemTimer.wait_time = 10
+	$ItemTimer.wait_time = item_interval
 	
 	get_tree().call_group("obstacles", "queue_free")
 	get_tree().call_group("items", "queue_free")
@@ -51,8 +53,8 @@ func new_game():
 
 func increase_difficulty():
 	if (score >= 9) and ((score % 10) == 0):
-		obs_velocity += 5.0
-		emit_signal("speed")
+		obs_velocity += velocity_multiplier
+		$InfiniteScrollBackground.increase_speed(velocity_multiplier)
 		if $ObstacleTimer.wait_time > 1:
 			$ObstacleTimer.wait_time -= 0.2
 
@@ -194,3 +196,24 @@ func _on_missile_timer_timeout():
 
 func _on_missile_shot_animation_finished():
 	$Player/MissileShot.hide()
+
+
+func _on_hud_change_difficulty(settings):
+	if settings[0] == 0:
+		velocity_multiplier = 2.5
+	elif settings[0] == 1:
+		velocity_multiplier = 5
+	else:
+		velocity_multiplier = 10
+	
+	if settings[1] == 0:
+		item_interval = 10
+	elif settings[1] == 1:
+		item_interval = 25
+	else:
+		item_interval = 50
+	
+	if settings[2] == 2:
+		missile_storage = 3
+	else:
+		missile_storage = settings[2]

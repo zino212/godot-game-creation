@@ -2,14 +2,12 @@ extends CanvasLayer
 
 signal escape
 signal start_game
+signal change_difficulty(Vector3)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = true
 	visible = true
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		push_escape()
@@ -72,6 +70,8 @@ func update_settings(settings: Dictionary) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	
+	change_difficulty.emit(Vector3(settings.difficulty, settings.item, settings.missile))
 	
 	$Settings.visible = false
 	$Menu.visible = true

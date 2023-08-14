@@ -20,6 +20,8 @@ point_count = 2
 script = ExtResource("1_e05ru")
 
 [node name="InfiniteScrollBackground" parent="." instance=ExtResource("2_4t157")]
+velocity = 100.0
+direction = Vector2(-1, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_aso1r")]
 visible = false
@@ -77,6 +79,7 @@ script = ExtResource("20_6ue2d")
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="change_difficulty" from="HUD" to="." method="_on_hud_change_difficulty"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
