@@ -125,8 +125,7 @@ func add_missile():
 	missile = true
 	$MissileTimer.start()
 	get_tree().call_group("obstacles", "queue_free")
-	$Player/MissileShot.show()
-	$Player/MissileShot.play("shot")
+	$Player/MissileShot.shootMissile()
 
 func add_life():
 	if lives < 3:
