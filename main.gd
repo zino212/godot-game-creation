@@ -165,7 +165,6 @@ func _on_item_timer_timeout():
 	item_spawn_location.progress_ratio = randf()
 
 	var direction = item_spawn_location.rotation + PI / 2
-	add_child(item)
 	item.position = item_spawn_location.position
 
 	item.rotation = direction
@@ -174,6 +173,8 @@ func _on_item_timer_timeout():
 	item.linear_velocity = velocity.rotated(direction)
 	
 	item_type = item.get_item_type()
+	
+	add_child(item)
 
 func _on_shield_timer_timeout():
 	shield = false
