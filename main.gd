@@ -117,6 +117,7 @@ func _on_player_hit(body):
 		$Camera2D.shake(.3,50,7)
 		check_for_lives()
 		$HurtTimer.start()
+	body.queue_free()
 
 func add_shield():
 	shield = true
@@ -128,8 +129,7 @@ func add_missile():
 	missile = true
 	$MissileTimer.start()
 	get_tree().call_group("obstacles", "queue_free")
-	$Player/MissileShot.show()
-	$Player/MissileShot.play("shot")
+	$Player/MissileShot.shootMissile()
 
 func add_life():
 	if lives < 3:
@@ -168,7 +168,6 @@ func _on_item_timer_timeout():
 	item_spawn_location.progress_ratio = randf()
 
 	var direction = item_spawn_location.rotation + PI / 2
-	add_child(item)
 	item.position = item_spawn_location.position
 
 	item.rotation = direction
@@ -177,6 +176,8 @@ func _on_item_timer_timeout():
 	item.linear_velocity = velocity.rotated(direction)
 	
 	item_type = item.get_item_type()
+	
+	add_child(item)
 
 func _on_shield_timer_timeout():
 	shield = false
