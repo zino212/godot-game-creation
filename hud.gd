@@ -95,4 +95,10 @@ func show_controls():
 
 func _on_back_button_pressed():
 	$Controls.visible = false
+	$Credits.visible = false
 	$Menu.visible = true
+
+
+func show_credits():
+	$Menu.visible = false
+	$Credits.visible = true
