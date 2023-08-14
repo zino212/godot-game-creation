@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dl7xqsyiouaa7"]
+[gd_scene load_steps=11 format=3 uid="uid://dl7xqsyiouaa7"]
 
 [ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Scenes/Player.tscn" id="1_aso1r"]
 [ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
@@ -68,6 +68,13 @@ animations = [{
 "name": &"shot",
 "speed": 20.0
 }]
+[ext_resource type="PackedScene" uid="uid://1i6oiybm5hxy" path="res://infinite_scroll_background.tscn" id="2_4t157"]
+[ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://enemy.tscn" id="2_7x332"]
+[ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://hud.tscn" id="3_d3w67"]
+[ext_resource type="PackedScene" uid="uid://bbyqbcp5smlm6" path="res://shield_animation.tscn" id="4_5xcrk"]
+[ext_resource type="PackedScene" uid="uid://1v75bcocgvy5" path="res://Scenes/missile_shot.tscn" id="5_t557c"]
+[ext_resource type="Script" path="res://audioPlayer.gd" id="20_6ue2d"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="20_egwdq"]
 
 [sub_resource type="Curve2D" id="Curve2D_lkqsk"]
 _data = {
@@ -136,7 +143,6 @@ script = ExtResource("20_3w82x")
 script = ExtResource("21_cbgdv")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
-[connection signal="animation_finished" from="Player/MissileShot" to="." method="_on_missile_shot_animation_finished"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
