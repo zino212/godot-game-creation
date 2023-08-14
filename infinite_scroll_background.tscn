@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1i6oiybm5hxy"]
 
 [ext_resource type="Script" path="res://InfiniteScrollBackground.gd" id="1_xk676"]
-[ext_resource type="Texture2D" uid="uid://b7bhlq26sihkr" path="res://Project_BackgroundFinalv1.png" id="2_wwdu4"]
+[ext_resource type="Texture2D" uid="uid://b7bhlq26sihkr" path="res://Images/Project_BackgroundFinalv1.png" id="2_mp5pt"]
 
 [node name="InfiniteScrollBackground" type="ParallaxBackground"]
 script = ExtResource("1_xk676")
@@ -11,5 +11,5 @@ motion_mirroring = Vector2(1152, 650)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 texture_repeat = 2
-texture = ExtResource("2_wwdu4")
+texture = ExtResource("2_mp5pt")
 centered = false

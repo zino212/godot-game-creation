@@ -2,18 +2,17 @@
 ## To-Do
 ### Mechanics
 - DONE: Move Player
-- Move Background
+- DONE: Move Background
 - DONE: Moving Obstacles
 - DONE: Collision of Player and Obstacles
 - DONE: Implement Lives of Player
 - DONE: Implement Lose
-- Implement collision with enemy?
 ### Artwork
 - DONE: Player
-- Obstacles
-- Background
+- Obstacles -> ?
+- DONE: Background
 - DONE: Lives
-- Items
+- DONE: Items
 ### Menu
 - DONE: Pause Game
 - DONE: Implement Settings
@@ -28,7 +27,8 @@
 - DONE: Add animation for shield
 - DONE: Add animation for missile
 - DONE: Add animation for game over
-- Add better animation for shield
-- Add better animation for missile
+- DONE: Add better animation for shield
+- Add animations for player -> R
+- Add better animation for missile -> L
 ### General
 - Restructure project

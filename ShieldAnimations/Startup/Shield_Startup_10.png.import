@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csg46ufemmqdv"
-path="res://.godot/imported/Lives1.png-c550e048e8394e22747077461e50d75b.ctex"
+uid="uid://b5dos1oljphb4"
+path="res://.godot/imported/Shield_Startup_10.png-bffc0d5470d3843a3dc126fbabc13b0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Lives1.png"
-dest_files=["res://.godot/imported/Lives1.png-c550e048e8394e22747077461e50d75b.ctex"]
+source_file="res://ShieldAnimations/Startup/Shield_Startup_10.png"
+dest_files=["res://.godot/imported/Shield_Startup_10.png-bffc0d5470d3843a3dc126fbabc13b0b.ctex"]
 
 [params]
 

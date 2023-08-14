@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dl7xqsyiouaa7"]
+[gd_scene load_steps=24 format=3 uid="uid://dl7xqsyiouaa7"]
 
 [ext_resource type="PackedScene" uid="uid://dv0p0cj8x48h3" path="res://Player.tscn" id="1_aso1r"]
 [ext_resource type="Script" path="res://main.gd" id="1_e05ru"]
 [ext_resource type="PackedScene" uid="uid://1i6oiybm5hxy" path="res://infinite_scroll_background.tscn" id="2_4t157"]
 [ext_resource type="PackedScene" uid="uid://d1al14o0ndgh4" path="res://enemy.tscn" id="2_7x332"]
 [ext_resource type="PackedScene" uid="uid://bl7ovft0dcrrw" path="res://hud.tscn" id="3_d3w67"]
+[ext_resource type="PackedScene" uid="uid://bbyqbcp5smlm6" path="res://shield_animation.tscn" id="4_5xcrk"]
 [ext_resource type="Texture2D" uid="uid://cvb6awbcyli0q" path="res://MissileAnimation/Missile1.png" id="5_b6aq1"]
 [ext_resource type="Texture2D" uid="uid://c17pdgg3ate56" path="res://MissileAnimation/Missile2.png" id="6_ifqrf"]
 [ext_resource type="Texture2D" uid="uid://byx40m4orv1dq" path="res://MissileAnimation/Missile3.png" id="7_w2ujj"]
@@ -86,6 +87,9 @@ script = ExtResource("1_e05ru")
 visible = false
 position = Vector2(152, 482)
 
+[node name="ShieldAnimation" parent="Player" instance=ExtResource("4_5xcrk")]
+visible = false
+
 [node name="MissileShot" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(0, -1)
 scale = Vector2(0.39, 0.365)
@@ -120,7 +124,7 @@ rotation = 1.5708
 wait_time = 25.0
 
 [node name="ShieldTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 10.0
 one_shot = true
 
 [node name="HurtTimer" type="Timer" parent="."]
