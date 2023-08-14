@@ -113,6 +113,7 @@ func _on_player_hit(body):
 		$Camera2D.shake(.3,50,7)
 		check_for_lives()
 		$HurtTimer.start()
+	body.queue_free()
 
 func add_shield():
 	shield = true
