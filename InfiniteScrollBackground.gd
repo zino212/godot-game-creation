@@ -12,4 +12,4 @@ func _process(delta):
 	scroll_base_offset += (velocity * direction) * delta
 	
 func _increase_speed():
-	velocity+=5
+	velocity+=50

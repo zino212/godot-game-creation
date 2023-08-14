@@ -38,12 +38,20 @@ func lose_shield():
 
 func normal_animation():
 	$Sprite2D.play("default")
+	
+func brake():
+	$Sprite2D.play("braking")
+	
+func acceleration():
+	$Sprite2D.play("accelerating")
 
 func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
+		acceleration()
 		velocity.x += 250
 	if Input.is_action_pressed("move_left"):
+		brake()
 		velocity.x -= 250
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 250
