@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycql3"]
 size = Vector2(141, 41)
 
-[node name="Obstacle" type="RigidBody2D" groups=["obstacles"]]
+[node name="Obstacle" type="RigidBody2D" groups=["objects", "obstacles"]]
 collision_mask = 0
 mass = 0.01
 gravity_scale = 0.0
