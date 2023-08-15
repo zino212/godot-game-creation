@@ -386,7 +386,7 @@ layout_mode = 2
 [node name="Label4" type="Label" parent="Credits/VBoxContainer"]
 layout_mode = 2
 text = "Music:
-TBD"
+Easy Peazy by ROMANTICA, Lestmor"
 horizontal_alignment = 1
 
 [node name="HSeparator4" type="HSeparator" parent="Credits/VBoxContainer"]
