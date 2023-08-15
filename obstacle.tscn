@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvkqywnnb18xr"]
 
 [ext_resource type="Script" path="res://obstacle.gd" id="1_r6qfe"]
-[ext_resource type="Texture2D" uid="uid://3gkvd6elcm5v" path="res://Car_Obstacle.png" id="2_upqe4"]
+[ext_resource type="Texture2D" uid="uid://domm4ngav5ikw" path="res://Car_Obstacle.png" id="2_upqe4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycql3"]
 size = Vector2(141, 41)

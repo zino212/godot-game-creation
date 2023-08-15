@@ -39,9 +39,7 @@ func brake():
 	$Sprite2D.play("default")
 
 func acceleration():
-	$Sprite2D.play("acceleration_start")
-	await $Sprite2D.animation_looped
-	$Sprite2D.play("acceleration_end")
+	$Sprite2D.play("acceleration")
 	await $Sprite2D.animation_looped
 	$Sprite2D.play("default")
 #	if i == 0:
