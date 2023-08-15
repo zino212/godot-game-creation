@@ -6,12 +6,21 @@ var lives
 var obstacle_scene = preload("res://obstacle.tscn")
 var obs_velocity
 
+var velocity_multiplier = 5
+var item_interval = 15
+var missile_storage = 3
+
 var explosion_scene = preload("res://explosion.tscn")
 
 var item_scene = preload("res://item.tscn")
 var item_type
 var shield = false
 var missile = false
+
+var music = true
+var sound = true
+var m
+signal shoot_pulse
 
 signal speed
 
@@ -23,6 +32,9 @@ func _process(_delta):
 	
 	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
 		$Player/ShieldAnimation.shutdown()
+	
+	if Input.is_action_just_pressed("shoot_pulse") and $StartTimer.time_left == 0 and m > 0:
+		use_missile()
 
 func new_game():
 	
@@ -34,11 +46,15 @@ func new_game():
 	$Player/ShieldAnimation.hide()
 	$Player/ShieldAnimation.reset()
 	
+	m = 3
+	
 	score = 0
 	lives = 3
-	obs_velocity = 150.0
+	obs_velocity = 100.0
 	$ObstacleTimer.wait_time = 3
-	$ItemTimer.wait_time = 10
+	$ItemTimer.wait_time = item_interval
+	
+	$HUD.update_missiles(m)
 	
 	get_tree().call_group("obstacles", "queue_free")
 	get_tree().call_group("items", "queue_free")
@@ -48,17 +64,19 @@ func new_game():
 	$HUD.show_message("Get ready!")
 	$Player.show()
 	$StartTimer.start()
+	$Music.play()
 
 func increase_difficulty():
 	if (score >= 9) and ((score % 10) == 0):
-		obs_velocity += 5.0
-		emit_signal("speed")
+		obs_velocity += velocity_multiplier
+		$InfiniteScrollBackground.increase_speed(velocity_multiplier)
 		if $ObstacleTimer.wait_time > 1:
 			$ObstacleTimer.wait_time -= 0.2
 
 func show_timer():
 	if ($StartTimer.time_left <= 4) and not ($StartTimer.time_left < 1):
 		$HUD.show_message(str(int($StartTimer.time_left)))
+		
 	if ($StartTimer.time_left < 1) and ($StartTimer.time_left > 0):
 		$HUD.show_message("Go!")
 	elif not ($ScoreTimer.is_stopped()):
@@ -105,7 +123,8 @@ func set_item_type(t):
 
 func _on_player_hit(body):
 	if "Item" in str(body):
-		$AudioPlayer.play_item_audio(item_type)
+		if sound == true:
+			$AudioPlayer.play_item_audio(item_type)
 		if item_type == 0:
 			add_shield()
 		elif item_type == 1:
@@ -117,6 +136,7 @@ func _on_player_hit(body):
 		$Camera2D.shake(.3,50,7)
 		check_for_lives()
 		$HurtTimer.start()
+	body.queue_free()
 
 func add_shield():
 	shield = true
@@ -125,11 +145,18 @@ func add_shield():
 	$Player/ShieldAnimation.startup()
 
 func add_missile():
+	m += 1
+	if m > 3:
+		use_missile()
+	$HUD.update_missiles(m)
+
+func use_missile():
+	m -= 1
 	missile = true
 	$MissileTimer.start()
 	get_tree().call_group("obstacles", "queue_free")
-	$Player/MissileShot.show()
-	$Player/MissileShot.play("shot")
+	$Player/MissileShot.shootMissile()
+	$HUD.update_missiles(m)
 
 func add_life():
 	if lives < 3:
@@ -141,7 +168,7 @@ func check_for_lives():
 	$HUD.update_lives(lives)
 	if lives == 0:
 		game_over()
-	else:
+	elif sound == true:
 		$AudioPlayer.play_hurt_audio()
 
 func game_over():
@@ -159,6 +186,7 @@ func game_over():
 	
 	$HUD.show_game_over()
 	$Player.hide()
+	$Music.stop()
 
 
 func _on_item_timer_timeout():
@@ -168,7 +196,6 @@ func _on_item_timer_timeout():
 	item_spawn_location.progress_ratio = randf()
 
 	var direction = item_spawn_location.rotation + PI / 2
-	add_child(item)
 	item.position = item_spawn_location.position
 
 	item.rotation = direction
@@ -177,6 +204,8 @@ func _on_item_timer_timeout():
 	item.linear_velocity = velocity.rotated(direction)
 	
 	item_type = item.get_item_type()
+	
+	add_child(item)
 
 func _on_shield_timer_timeout():
 	shield = false
@@ -193,3 +222,28 @@ func _on_missile_timer_timeout():
 
 func _on_missile_shot_animation_finished():
 	$Player/MissileShot.hide()
+
+
+func _on_hud_change_difficulty(settings):
+	if settings[0] == 0:
+		velocity_multiplier = 2.5
+	elif settings[0] == 1:
+		velocity_multiplier = 5
+	else:
+		velocity_multiplier = 10
+	
+	if settings[1] == 0:
+		item_interval = 10
+	elif settings[1] == 1:
+		item_interval = 25
+	else:
+		item_interval = 50
+	
+	if settings[2] == 2:
+		missile_storage = 3
+	else:
+		missile_storage = settings[2]
+
+func _on_hud_change_sound(sound_settings):
+	music = bool(sound_settings[0])
+	sound = bool(sound_settings[1])

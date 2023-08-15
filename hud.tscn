@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl7ovft0dcrrw"]
+[gd_scene load_steps=10 format=3 uid="uid://bl7ovft0dcrrw"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_brd2m"]
 [ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://settings.tscn" id="2_i4188"]
 [ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://health_bar.tscn" id="2_u18ck"]
+[ext_resource type="PackedScene" uid="uid://4jyt6ybvs6fq" path="res://missile_bar.tscn" id="3_he3ve"]
+[ext_resource type="FontFile" uid="uid://bqbm3yqyiicvv" path="res://cyberway-riders-font/CyberwayRiders-lg97d.ttf" id="3_qv03x"]
+[ext_resource type="Texture2D" uid="uid://dyjfh6jcon4xx" path="res://Images/Lives1_small.png" id="5_rtfv0"]
+[ext_resource type="Texture2D" uid="uid://cxr2wq6txhmsf" path="res://Images/Shield_Item_small.png" id="6_1y857"]
+[ext_resource type="Texture2D" uid="uid://b17you8lg7t1v" path="res://Images/Missile_Item_small.png" id="7_j865e"]
+[ext_resource type="AudioStream" uid="uid://dblid387sy3n" path="res://Audio/click.wav" id="8_dt73r"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -19,6 +25,18 @@ offset_right = -11.0
 offset_bottom = 19.0
 scale = Vector2(2.64, 1)
 
+[node name="MissileBar" parent="." instance=ExtResource("3_he3ve")]
+visible = false
+position = Vector2(60, 104)
+
+[node name="Panel" type="Panel" parent="MissileBar"]
+show_behind_parent = true
+offset_left = -13.8
+offset_top = -24.2
+offset_right = 26.2
+offset_bottom = 15.8
+scale = Vector2(2.64, 1)
+
 [node name="ScoreLabel" type="Label" parent="."]
 visible = false
 anchors_preset = 1
@@ -30,6 +48,7 @@ offset_right = -42.0
 offset_bottom = 100.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 0.337255, 0.878431, 1)
+theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 27
 text = "0"
 horizontal_alignment = 1
@@ -56,6 +75,7 @@ offset_right = 150.0
 offset_bottom = 149.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.337255, 0.878431, 1)
+theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 35
 text = "Get ready!"
 horizontal_alignment = 1
@@ -78,9 +98,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -275.5
-offset_top = -186.5
+offset_top = -210.0
 offset_right = 275.5
-offset_bottom = 186.5
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -95,8 +115,9 @@ offset_bottom = 284.0
 
 [node name="Label" type="Label" parent="Menu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Menu"
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 50
+text = "CYBERWAVE"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Menu/VBoxContainer"]
@@ -107,51 +128,301 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 tooltip_text = "Resume your current Game"
+theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "Resume"
 
 [node name="Start_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Start a new Game"
+theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "Start Game"
 
 [node name="HSeparator2" type="HSeparator" parent="Menu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="Controls_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Configure Resolution and VSync"
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 22
+text = "Controls"
 
 [node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Configure Resolution and VSync"
+theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "Settings"
+
+[node name="HSeparator3" type="HSeparator" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Credits_Button" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Configure Resolution and VSync"
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 22
+text = "Credits"
+
+[node name="HSeparator4" type="HSeparator" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="End_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 tooltip_text = "Quit the Game"
+theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "End Game"
 
 [node name="Settings" parent="." instance=ExtResource("2_i4188")]
+visible = false
+offset_left = -275.0
+offset_right = 275.0
+
+[node name="MessageTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Controls" type="Panel" parent="."]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -275.0
-offset_top = -158.5
-offset_right = 275.0
-offset_bottom = 158.5
+offset_left = -275.5
+offset_top = -237.5
+offset_right = 275.5
+offset_bottom = 237.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MessageTimer" type="Timer" parent="."]
-one_shot = true
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.5
+offset_top = 12.0
+offset_right = 266.5
+offset_bottom = 444.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Movement" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Use W/A/S/D or the Arrow Keys for moving
+the motorcyclist and evading incoming obstacles."
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Items" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pickup the Items displayed below for special powers."
+horizontal_alignment = 1
+
+[node name="ItemPictures" type="HBoxContainer" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="Heart" type="Sprite2D" parent="Controls/VBoxContainer/ItemPictures"]
+position = Vector2(89, 30)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_rtfv0")
+
+[node name="Shield" type="Sprite2D" parent="Controls/VBoxContainer/ItemPictures"]
+position = Vector2(272, 30)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_1y857")
+
+[node name="Missile" type="Sprite2D" parent="Controls/VBoxContainer/ItemPictures"]
+position = Vector2(447, 30)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_j865e")
+
+[node name="ItemNames" type="HBoxContainer" parent="Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Heart" type="Label" parent="Controls/VBoxContainer/ItemNames"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Extra Life"
+horizontal_alignment = 1
+
+[node name="Shield" type="Label" parent="Controls/VBoxContainer/ItemNames"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Shield
+"
+horizontal_alignment = 1
+
+[node name="Missile" type="Label" parent="Controls/VBoxContainer/ItemNames"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pulse"
+horizontal_alignment = 1
+
+[node name="ExplanationTexts" type="HBoxContainer" parent="Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="Heart" type="Label" parent="Controls/VBoxContainer/ExplanationTexts"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Regenerate one of your 3 lives."
+horizontal_alignment = 1
+
+[node name="Shield" type="Label" parent="Controls/VBoxContainer/ExplanationTexts"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Get a shield for protecting
+you a few seconds.
+"
+horizontal_alignment = 1
+
+[node name="Missile" type="Label" parent="Controls/VBoxContainer/ExplanationTexts"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Get one of three pulses to destroy
+all obstacles for a few seconds."
+horizontal_alignment = 1
+
+[node name="HSeparator6" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Missile" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Use the SPACE-Key for firing a pulse."
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Back_Button" type="Button" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 22
+text = "Back"
+
+[node name="Credits" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.5
+offset_top = -217.5
+offset_right = 275.5
+offset_bottom = 217.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.5
+offset_top = -133.5
+offset_right = 255.5
+offset_bottom = 133.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Credits/VBoxContainer"]
+layout_mode = 2
+text = "This game was developed during the summer course program
+\"Game Creation with Godot 2023\" of the Montana State University
+and the Freie Universität Berlin."
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Credits/VBoxContainer"]
+layout_mode = 2
+text = "Game Development and Game Design:
+Rebekah Yager
+Luis Günther"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Credits/VBoxContainer"]
+layout_mode = 2
+text = "Music:
+Easy Peazy by ROMANTICA, Lestmor"
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Back_Button" type="Button" parent="Credits/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+tooltip_text = "Quit the Game"
+theme_override_fonts/font = ExtResource("3_qv03x")
+theme_override_font_sizes/font_size = 22
+text = "Back"
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dt73r")
 
 [connection signal="pressed" from="Menu/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Controls_Button" to="." method="show_controls"]
 [connection signal="pressed" from="Menu/VBoxContainer/Settings_Button" to="." method="show_settings"]
+[connection signal="pressed" from="Menu/VBoxContainer/Credits_Button" to="." method="show_credits"]
 [connection signal="pressed" from="Menu/VBoxContainer/End_Button" to="." method="_on_end_button_pressed"]
 [connection signal="apply_button_pressed" from="Settings" to="." method="_on_settings_apply_button_pressed"]
+[connection signal="pressed" from="Controls/VBoxContainer/Back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Credits/VBoxContainer/Back_Button" to="." method="_on_back_button_pressed"]

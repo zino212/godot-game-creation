@@ -1,25 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvkqywnnb18xr"]
+[gd_scene load_steps=4 format=3 uid="uid://cvkqywnnb18xr"]
 
-[ext_resource type="Texture2D" uid="uid://np4rkbfliyye" path="res://boulder.png" id="1_qq8gg"]
 [ext_resource type="Script" path="res://obstacle.gd" id="1_r6qfe"]
-[ext_resource type="Texture2D" uid="uid://bjqlh33vmlh60" path="res://boulder_mirrored.png" id="3_ctq2w"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t61hq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_qq8gg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_ctq2w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://3gkvd6elcm5v" path="res://Car_Obstacle.png" id="2_upqe4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycql3"]
-size = Vector2(35, 35)
+size = Vector2(141, 41)
 
 [node name="Obstacle" type="RigidBody2D" groups=["obstacles"]]
 collision_mask = 0
@@ -27,15 +12,15 @@ mass = 0.01
 gravity_scale = 0.0
 linear_damp_mode = 1
 script = ExtResource("1_r6qfe")
-metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(79.5, 25)
 rotation = 3.14159
-scale = Vector2(0.0742188, 0.0771484)
-sprite_frames = SubResource("SpriteFrames_t61hq")
+scale = Vector2(0.262109, 0.225241)
+texture = ExtResource("2_upqe4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
+position = Vector2(80, 29)
 shape = SubResource("RectangleShape2D_ycql3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

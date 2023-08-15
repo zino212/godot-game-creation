@@ -5,6 +5,8 @@
 
 [node name="InfiniteScrollBackground" type="ParallaxBackground"]
 script = ExtResource("1_xk676")
+velocity = null
+direction = null
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(1152, 650)
