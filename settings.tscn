@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0dtk3et5b0u5"]
+[gd_scene load_steps=12 format=3 uid="uid://d0dtk3et5b0u5"]
 
 [ext_resource type="Script" path="res://settings.gd" id="1_wiu41"]
 [ext_resource type="FontFile" uid="uid://bqbm3yqyiicvv" path="res://cyberway-riders-font/CyberwayRiders-lg97d.ttf" id="2_hmfno"]
+[ext_resource type="Script" path="res://Difficulty_Selector.gd" id="3_3xn7x"]
+[ext_resource type="AudioStream" uid="uid://dblid387sy3n" path="res://Audio/click.wav" id="3_4x42c"]
+[ext_resource type="Script" path="res://Item_Selector.gd" id="4_0h7pk"]
+[ext_resource type="Script" path="res://Missile_Selector.gd" id="5_ex0cd"]
+[ext_resource type="Script" path="res://Resolution_Selector.gd" id="6_yawii"]
+[ext_resource type="Script" path="res://Fullscreen_Selector.gd" id="7_yjihi"]
+[ext_resource type="Script" path="res://Vsync_Selector.gd" id="8_u1j1t"]
+[ext_resource type="Script" path="res://Music_Selector.gd" id="9_2uokq"]
+[ext_resource type="Script" path="res://Sounds_Selector.gd" id="10_u8nsx"]
 
 [node name="Settings" type="Panel"]
 anchors_preset = 8
@@ -10,9 +19,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -281.0
-offset_top = -275.0
+offset_top = -312.5
 offset_right = 281.0
-offset_bottom = 275.0
+offset_bottom = 312.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wiu41")
@@ -21,9 +30,9 @@ script = ExtResource("1_wiu41")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 0
 offset_left = 39.0
-offset_top = 35.0
+offset_top = 15.0
 offset_right = 517.0
-offset_bottom = 316.0
+offset_bottom = 610.0
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -33,7 +42,7 @@ theme_override_font_sizes/font_size = 30
 text = "Settings"
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
 [node name="Difficulty" type="Label" parent="VBoxContainer"]
@@ -51,6 +60,7 @@ layout_mode = 2
 
 [node name="Difficulty_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+script = ExtResource("3_3xn7x")
 
 [node name="Label" type="Label" parent="VBoxContainer/Difficulty_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -75,6 +85,7 @@ popup/item_2/id = 2
 
 [node name="Item_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+script = ExtResource("4_0h7pk")
 
 [node name="Label" type="Label" parent="VBoxContainer/Item_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -99,6 +110,7 @@ popup/item_2/id = 2
 
 [node name="Missile_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+script = ExtResource("5_ex0cd")
 
 [node name="Label" type="Label" parent="VBoxContainer/Missile_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -122,7 +134,7 @@ popup/item_2/text = "3"
 popup/item_2/id = 2
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
 [node name="General" type="Label" parent="VBoxContainer"]
@@ -140,6 +152,7 @@ layout_mode = 2
 
 [node name="Resolution_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+script = ExtResource("6_yawii")
 
 [node name="Label" type="Label" parent="VBoxContainer/Resolution_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -163,6 +176,7 @@ popup/item_2/id = 2
 [node name="Fullscreen_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+script = ExtResource("7_yjihi")
 
 [node name="Label" type="Label" parent="VBoxContainer/Fullscreen_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -178,6 +192,7 @@ theme_override_font_sizes/font_size = 20
 
 [node name="Vsync_Selector" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+script = ExtResource("8_u1j1t")
 
 [node name="Label" type="Label" parent="VBoxContainer/Vsync_Selector"]
 custom_minimum_size = Vector2(250, 0)
@@ -189,8 +204,60 @@ text = "VSync"
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
+[node name="HSeparator6" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Audio" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_hmfno")
+theme_override_font_sizes/font_size = 25
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="HSeparator7" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Music_Selector" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("9_2uokq")
+
+[node name="Label" type="Label" parent="VBoxContainer/Music_Selector"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Music
+"
+
+[node name="MusicCheckBox" type="CheckBox" parent="VBoxContainer/Music_Selector"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+button_pressed = true
+
+[node name="Sounds_Selector" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("10_u8nsx")
+
+[node name="Label" type="Label" parent="VBoxContainer/Sounds_Selector"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sounds
+"
+
+[node name="SoundsCheckBox" type="CheckBox" parent="VBoxContainer/Sounds_Selector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+button_pressed = true
+
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
 [node name="Apply_Button" type="Button" parent="VBoxContainer"]
@@ -199,4 +266,31 @@ theme_override_fonts/font = ExtResource("2_hmfno")
 theme_override_font_sizes/font_size = 25
 text = "Apply"
 
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4x42c")
+
+[connection signal="difficulty_changed" from="VBoxContainer/Difficulty_Selector" to="." method="_on_difficulty_selector_difficulty_changed"]
+[connection signal="item_selected" from="VBoxContainer/Difficulty_Selector/OptionButton" to="VBoxContainer/Difficulty_Selector" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Difficulty_Selector/OptionButton" to="." method="click_audio"]
+[connection signal="item_changed" from="VBoxContainer/Item_Selector" to="." method="_on_item_selector_item_changed"]
+[connection signal="item_selected" from="VBoxContainer/Item_Selector/OptionButton" to="VBoxContainer/Item_Selector" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Item_Selector/OptionButton" to="." method="click_audio"]
+[connection signal="missile_changed" from="VBoxContainer/Missile_Selector" to="." method="_on_missile_selector_missile_changed"]
+[connection signal="item_selected" from="VBoxContainer/Missile_Selector/OptionButton" to="VBoxContainer/Missile_Selector" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Missile_Selector/OptionButton" to="." method="click_audio"]
+[connection signal="resolution_changed" from="VBoxContainer/Resolution_Selector" to="." method="_on_resolution_selector_resolution_changed"]
+[connection signal="item_selected" from="VBoxContainer/Resolution_Selector/OptionButton" to="VBoxContainer/Resolution_Selector" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Resolution_Selector/OptionButton" to="." method="click_audio"]
+[connection signal="toggled" from="VBoxContainer/Fullscreen_Selector" to="." method="_on_fullscreen_selector_toggled"]
+[connection signal="pressed" from="VBoxContainer/Fullscreen_Selector/FullscreenCheckBox" to="." method="click_audio"]
+[connection signal="toggled" from="VBoxContainer/Fullscreen_Selector/FullscreenCheckBox" to="VBoxContainer/Fullscreen_Selector" method="_on_fullscreen_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/Vsync_Selector" to="." method="_on_vsync_selector_toggled"]
+[connection signal="pressed" from="VBoxContainer/Vsync_Selector/VsyncCheckBox" to="." method="click_audio"]
+[connection signal="toggled" from="VBoxContainer/Vsync_Selector/VsyncCheckBox" to="VBoxContainer/Vsync_Selector" method="_on_vsync_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/Music_Selector" to="." method="_on_music_selector_toggled"]
+[connection signal="pressed" from="VBoxContainer/Music_Selector/MusicCheckBox" to="." method="click_audio"]
+[connection signal="toggled" from="VBoxContainer/Music_Selector/MusicCheckBox" to="VBoxContainer/Music_Selector" method="_on_music_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/Sounds_Selector" to="." method="_on_sounds_selector_toggled"]
+[connection signal="pressed" from="VBoxContainer/Sounds_Selector/SoundsCheckBox" to="." method="click_audio"]
+[connection signal="toggled" from="VBoxContainer/Sounds_Selector/SoundsCheckBox" to="VBoxContainer/Sounds_Selector" method="_on_sounds_check_box_toggled"]
 [connection signal="pressed" from="VBoxContainer/Apply_Button" to="." method="_on_apply_button_pressed"]

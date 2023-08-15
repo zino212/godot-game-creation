@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl7ovft0dcrrw"]
+[gd_scene load_steps=9 format=3 uid="uid://bl7ovft0dcrrw"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_brd2m"]
 [ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://settings.tscn" id="2_i4188"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dyjfh6jcon4xx" path="res://Images/Lives1_small.png" id="5_rtfv0"]
 [ext_resource type="Texture2D" uid="uid://cxr2wq6txhmsf" path="res://Images/Shield_Item_small.png" id="6_1y857"]
 [ext_resource type="Texture2D" uid="uid://b17you8lg7t1v" path="res://Images/Missile_Item_small.png" id="7_j865e"]
+[ext_resource type="AudioStream" uid="uid://dblid387sy3n" path="res://Audio/click.wav" id="8_dt73r"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -399,6 +400,9 @@ tooltip_text = "Quit the Game"
 theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "Back"
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dt73r")
 
 [connection signal="pressed" from="Menu/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]

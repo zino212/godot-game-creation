@@ -17,6 +17,9 @@ var item_type
 var shield = false
 var missile = false
 
+var music = true
+var sound = true
+
 func _ready():
 	pass
 
@@ -107,7 +110,8 @@ func set_item_type(t):
 
 func _on_player_hit(body):
 	if "Item" in str(body):
-		$AudioPlayer.play_item_audio(item_type)
+		if sound == true:
+			$AudioPlayer.play_item_audio(item_type)
 		if item_type == 0:
 			add_shield()
 		elif item_type == 1:
@@ -143,7 +147,7 @@ func check_for_lives():
 	$HUD.update_lives(lives)
 	if lives == 0:
 		game_over()
-	else:
+	elif sound == true:
 		$AudioPlayer.play_hurt_audio()
 
 func game_over():
@@ -217,3 +221,7 @@ func _on_hud_change_difficulty(settings):
 		missile_storage = 3
 	else:
 		missile_storage = settings[2]
+
+func _on_hud_change_sound(sound_settings):
+	music = bool(sound_settings[0])
+	sound = bool(sound_settings[1])
