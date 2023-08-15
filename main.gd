@@ -3,16 +3,16 @@ extends Node
 var score
 var lives
 
-var obstacle_scene = preload("res://obstacle.tscn")
+var obstacle_scene = preload("res://Scenes/obstacle.tscn")
 var obs_velocity
 
 var velocity_multiplier = 5
 var item_interval = 15
 var missile_storage = 3
 
-var explosion_scene = preload("res://explosion.tscn")
+var explosion_scene = preload("res://Scenes/explosion.tscn")
 
-var item_scene = preload("res://item.tscn")
+var item_scene = preload("res://Scenes/item.tscn")
 var item_type
 var shield = false
 var missile = false

@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bl7ovft0dcrrw"]
 
 [ext_resource type="Script" path="res://Scripts/HUD/hud.gd" id="1_brd2m"]
-[ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://settings.tscn" id="2_i4188"]
-[ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://health_bar.tscn" id="2_u18ck"]
-[ext_resource type="PackedScene" uid="uid://4jyt6ybvs6fq" path="res://missile_bar.tscn" id="3_he3ve"]
+[ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://Scenes/settings.tscn" id="2_i4188"]
+[ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://Scenes/health_bar.tscn" id="2_u18ck"]
+[ext_resource type="PackedScene" uid="uid://4jyt6ybvs6fq" path="res://Scenes/missile_bar.tscn" id="3_he3ve"]
 [ext_resource type="FontFile" uid="uid://bqbm3yqyiicvv" path="res://Font/CyberwayRiders-lg97d.ttf" id="3_qv03x"]
 [ext_resource type="Texture2D" uid="uid://dyjfh6jcon4xx" path="res://Images/Items/Lives1_small.png" id="5_rtfv0"]
 [ext_resource type="Texture2D" uid="uid://cxr2wq6txhmsf" path="res://Images/Items/Shield_Item_small.png" id="6_1y857"]
