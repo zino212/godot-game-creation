@@ -20,6 +20,7 @@ func _on_start_button_pressed():
 	start_game.emit()
 	$ScoreLabel.show()
 	$"Health Bar".show()
+	$MissileBar.show()
 	$Menu/VBoxContainer/Start_Button.text = "Restart"
 	$Menu/VBoxContainer/Resume_Button.show()
 	
@@ -41,6 +42,13 @@ func update_score(score):
 
 func update_lives(lives):
 	$"Health Bar".set_lives(lives)
+
+func update_missiles(missiles):
+	if missiles > 0:
+		$MissileBar/Panel.show()
+	else:
+		$MissileBar/Panel.hide()
+	$MissileBar.set_missiles(missiles)
 
 func push_escape():
 	if $Message.text == "Game paused":
