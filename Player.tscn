@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dv0p0cj8x48h3"]
+[gd_scene load_steps=23 format=3 uid="uid://dv0p0cj8x48h3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_cm5wk"]
 [ext_resource type="Texture2D" uid="uid://djvmsshrqhtqd" path="res://Project_Player_Accelerating1.png" id="3_7rv31"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://mt342oyfvoe" path="res://Project_Player_Hurt.png" id="3_kkkat"]
 [ext_resource type="Texture2D" uid="uid://c3aiiiec4favd" path="res://Project_Player_Accelerating2.png" id="4_2204t"]
 [ext_resource type="Texture2D" uid="uid://p33p1f8sjlu5" path="res://Project_Player_Braking2.png" id="4_e1qbw"]
-[ext_resource type="Texture2D" uid="uid://doqt3l375phpf" path="res://Project_Player_Shield.png" id="4_pll46"]
 [ext_resource type="Texture2D" uid="uid://ccewmqtqcguji" path="res://Project_Player_Accelerating3.png" id="5_qh1xg"]
 [ext_resource type="Texture2D" uid="uid://douu432th8o6h" path="res://Project_Player_Accelerating4.png" id="6_eyhqu"]
 [ext_resource type="Texture2D" uid="uid://drtxf4unnqx2h" path="res://Project_Player_Accelerating5.png" id="7_ughvu"]
@@ -27,6 +26,50 @@ load_path = "res://.godot/imported/Project_Player_Accelerating5.png-1863a21bdbee
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wd45h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_iq4eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rv31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2204t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qh1xg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eyhqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ughvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_euf72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_28fnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wsoad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eyhqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qh1xg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2204t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iq4eb")
+}],
+"loop": true,
+"name": &"acceleration",
+"speed": 7.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("CompressedTexture2D_r7hja")
@@ -157,25 +200,6 @@ animations = [{
 "loop": true,
 "name": &"hurt",
 "speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_gnjiv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_pll46")
-}],
-"loop": true,
-"name": &"lose_shield",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_pll46")
-}],
-"loop": true,
-"name": &"shield",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6g4q3"]
@@ -189,8 +213,8 @@ script = ExtResource("1_cm5wk")
 position = Vector2(3.05176e-05, -0.999939)
 scale = Vector2(0.387396, 0.375566)
 sprite_frames = SubResource("SpriteFrames_wd45h")
-animation = &"acceleration_idle"
-frame_progress = 0.117334
+animation = &"acceleration"
+frame_progress = 0.806206
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
