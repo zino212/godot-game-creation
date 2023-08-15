@@ -19,7 +19,6 @@ var missile = false
 
 var music = true
 var sound = true
-var m
 signal shoot_pulse
 
 signal speed
@@ -33,7 +32,7 @@ func _process(_delta):
 	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
 		$Player/ShieldAnimation.shutdown()
 	
-	if Input.is_action_just_pressed("shoot_pulse") and $StartTimer.time_left == 0 and m > 0:
+	if Input.is_action_just_pressed("shoot_pulse") and $StartTimer.time_left == 0 and missile_storage > 0:
 		use_missile()
 
 func new_game():
@@ -46,25 +45,23 @@ func new_game():
 	$Player/ShieldAnimation.hide()
 	$Player/ShieldAnimation.reset()
 	
-	m = 3
-	
 	score = 0
 	lives = 3
 	obs_velocity = 100.0
-	$ObstacleTimer.wait_time = 3
+	$ObstacleTimer.wait_time = 4
 	$ItemTimer.wait_time = item_interval
 	
-	$HUD.update_missiles(m)
+	$HUD.update_missiles(missile_storage)
 	
-	get_tree().call_group("obstacles", "queue_free")
-	get_tree().call_group("items", "queue_free")
+	get_tree().call_group("objects", "queue_free")
 	
 	$HUD.update_score(score)
 	$HUD.update_lives(lives)
 	$HUD.show_message("Get ready!")
 	$Player.show()
 	$StartTimer.start()
-	$Music.play()
+	if music == true:
+		$Music.play()
 
 func increase_difficulty():
 	if (score >= 9) and ((score % 10) == 0):
@@ -92,7 +89,7 @@ func _on_obstacle_timer_timeout():
 func spawn_obstacle():
 	var obstacle = obstacle_scene.instantiate()
 
-	var obstacle_spawn_location = get_node("ObstaclePath/ObstacleSpawnLocation")
+	var obstacle_spawn_location = get_node("ObjectPath/ObjectSpawnLocation")
 	obstacle_spawn_location.progress_ratio = randf()
 
 	var direction = obstacle_spawn_location.rotation + PI / 2
@@ -145,18 +142,18 @@ func add_shield():
 	$Player/ShieldAnimation.startup()
 
 func add_missile():
-	m += 1
-	if m > 3:
+	missile_storage += 1
+	if missile_storage > 3:
 		use_missile()
-	$HUD.update_missiles(m)
+	$HUD.update_missiles(missile_storage)
 
 func use_missile():
-	m -= 1
+	missile_storage -= 1
 	missile = true
 	$MissileTimer.start()
 	get_tree().call_group("obstacles", "queue_free")
 	$Player/MissileShot.shootMissile()
-	$HUD.update_missiles(m)
+	$HUD.update_missiles(missile_storage)
 
 func add_life():
 	if lives < 3:
@@ -181,8 +178,7 @@ func game_over():
 	add_child(explosion)
 	$Camera2D.shake(.3,50,7)
 	
-	get_tree().call_group("obstacles", "queue_free")
-	get_tree().call_group("items", "queue_free")
+	get_tree().call_group("objects", "queue_free")
 	
 	$HUD.show_game_over()
 	$Player.hide()
@@ -192,7 +188,7 @@ func game_over():
 func _on_item_timer_timeout():
 	var item = item_scene.instantiate()
 
-	var item_spawn_location = get_node("ObstaclePath/ObstacleSpawnLocation")
+	var item_spawn_location = get_node("ObjectPath/ObjectSpawnLocation")
 	item_spawn_location.progress_ratio = randf()
 
 	var direction = item_spawn_location.rotation + PI / 2
@@ -245,5 +241,9 @@ func _on_hud_change_difficulty(settings):
 		missile_storage = settings[2]
 
 func _on_hud_change_sound(sound_settings):
+	if music == false and bool(sound_settings[0]) == true:
+		$Music.play()
 	music = bool(sound_settings[0])
 	sound = bool(sound_settings[1])
+	if music == false:
+		$Music.stop()
