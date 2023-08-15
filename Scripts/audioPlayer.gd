@@ -6,7 +6,7 @@ var heart_audio = preload("res://Audio/lifeUp.wav")
 
 var hurt_audio = preload("res://Audio/hitHurt.wav")
 
-var countdown = hurt_audio
+var countdown = preload("res://Audio/start.mp3")
 
 #-----------------------------------------------------------------
 
@@ -25,4 +25,5 @@ func play_hurt_audio():
 
 func play_countdown():
 	stream = countdown
+	await get_tree().create_timer(1.0).timeout
 	play()

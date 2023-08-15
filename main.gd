@@ -80,6 +80,7 @@ func new_game():
 	
 	$StartTimer.start()
 	if sound == true:
+		
 		$AudioPlayer.play_countdown()
 	
 	if music == true:
