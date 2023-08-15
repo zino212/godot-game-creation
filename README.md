@@ -9,7 +9,7 @@
 - DONE: Implement Lose
 ### Artwork
 - DONE: Player
-- Obstacles -> ?
+- DONE: Obstacles
 - DONE: Background
 - DONE: Lives
 - DONE: Items
@@ -28,7 +28,7 @@
 - DONE: Add animation for missile
 - DONE: Add animation for game over
 - DONE: Add better animation for shield
-- Add animations for player -> R
-- Add better animation for missile -> L
+- DONE: Add animations for player
+- DONE: Add better animation for missile
 ### General
-- Restructure project
+- DONE: Restructure project
