@@ -45,6 +45,7 @@ func new_game():
 	$HUD.show_message("Get ready!")
 	$Player.show()
 	$StartTimer.start()
+	$Music.play()
 
 func increase_difficulty():
 	if (score >= 9) and ((score % 10) == 0):
@@ -56,6 +57,7 @@ func increase_difficulty():
 func show_timer():
 	if ($StartTimer.time_left <= 4) and not ($StartTimer.time_left < 1):
 		$HUD.show_message(str(int($StartTimer.time_left)))
+		
 	if ($StartTimer.time_left < 1) and ($StartTimer.time_left > 0):
 		$HUD.show_message("Go!")
 	elif not ($ScoreTimer.is_stopped()):
@@ -155,6 +157,7 @@ func game_over():
 	
 	$HUD.show_game_over()
 	$Player.hide()
+	$Music.stop()
 
 
 func _on_item_timer_timeout():

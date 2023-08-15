@@ -40,16 +40,37 @@ func normal_animation():
 	$Sprite2D.play("default")
 	
 func brake():
-	$Sprite2D.play("braking")
-	
+	$Sprite2D.play("brake_idle")
+	await $Sprite2D.animation_looped
+	$Sprite2D.play("default")
+
 func acceleration():
-	$Sprite2D.play("accelerating")
+	$Sprite2D.play("acceleration_start")
+	await $Sprite2D.animation_looped
+	$Sprite2D.play("acceleration_end")
+	await $Sprite2D.animation_looped
+	$Sprite2D.play("default")
+#	if i == 0:
+#		$Sprite2D.play("acceleration_start")
+#		await $Sprite2D.animation_looped
+#		$Sprite2D.play("acceleration_end")
+#		await $Sprite2D.animation_looped
+#		$Sprite2D.play("default")
+#	elif i == 1:
+#		$Sprite2D.play("acceleration_start")
+#		await $Sprite2D.animation_looped
+#		$Sprite2D.play("acceleration_idle")
+	
 
 func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
-		acceleration()
 		velocity.x += 250
+		acceleration()
+#		if Input.is_action_just_released("move_right"):
+#			acceleration(0)
+#		else:
+#			acceleration(1)
 	if Input.is_action_pressed("move_left"):
 		brake()
 		velocity.x -= 250
@@ -68,3 +89,4 @@ func _on_body_entered(body):
 
 func blink():
 	$Sprite2D.play("hurt")
+
