@@ -59,7 +59,7 @@ func new_game():
 	
 	$StartTimer.start()
 	if sound == true:
-		$Countdown.play()
+		$AudioPlayer.play_countdown()
 	
 	if music == true:
 		$Music.play()
@@ -121,7 +121,7 @@ func set_item_type(t):
 
 func _on_player_hit(body):
 	if "Item" in str(body):
-		if sound == true:
+		if sound == true and item_type != 1:
 			$AudioPlayer.play_item_audio(item_type)
 		if item_type == 0:
 			add_shield()

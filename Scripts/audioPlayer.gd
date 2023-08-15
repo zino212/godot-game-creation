@@ -6,6 +6,8 @@ var heart_audio = preload("res://Audio/lifeUp.wav")
 
 var hurt_audio = preload("res://Audio/hitHurt.wav")
 
+var countdown = hurt_audio
+
 func play_item_audio(type):
 	if type == 0:
 		stream = shield_audio
@@ -17,4 +19,8 @@ func play_item_audio(type):
 
 func play_hurt_audio():
 	stream = hurt_audio
+	play()
+
+func play_countdown():
+	stream = countdown
 	play()
