@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://hud.gd" id="1_brd2m"]
 [ext_resource type="PackedScene" uid="uid://d0dtk3et5b0u5" path="res://settings.tscn" id="2_i4188"]
 [ext_resource type="PackedScene" uid="uid://c15a6yvms4nne" path="res://health_bar.tscn" id="2_u18ck"]
+[ext_resource type="PackedScene" uid="uid://4jyt6ybvs6fq" path="res://missile_bar.tscn" id="3_he3ve"]
 [ext_resource type="FontFile" uid="uid://bqbm3yqyiicvv" path="res://cyberway-riders-font/CyberwayRiders-lg97d.ttf" id="3_qv03x"]
 [ext_resource type="Texture2D" uid="uid://dyjfh6jcon4xx" path="res://Images/Lives1_small.png" id="5_rtfv0"]
 [ext_resource type="Texture2D" uid="uid://cxr2wq6txhmsf" path="res://Images/Shield_Item_small.png" id="6_1y857"]
@@ -22,6 +23,18 @@ offset_left = -51.0
 offset_top = -21.0
 offset_right = -11.0
 offset_bottom = 19.0
+scale = Vector2(2.64, 1)
+
+[node name="MissileBar" parent="." instance=ExtResource("3_he3ve")]
+visible = false
+position = Vector2(60, 104)
+
+[node name="Panel" type="Panel" parent="MissileBar"]
+show_behind_parent = true
+offset_left = -13.8
+offset_top = -24.2
+offset_right = 26.2
+offset_bottom = 15.8
 scale = Vector2(2.64, 1)
 
 [node name="ScoreLabel" type="Label" parent="."]

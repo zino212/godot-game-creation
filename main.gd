@@ -19,6 +19,10 @@ var missile = false
 
 var music = true
 var sound = true
+var m
+signal shoot_pulse
+
+signal speed
 
 func _ready():
 	pass
@@ -28,6 +32,9 @@ func _process(_delta):
 	
 	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
 		$Player/ShieldAnimation.shutdown()
+	
+	if Input.is_action_just_pressed("shoot_pulse") and $StartTimer.time_left == 0 and m > 0:
+		use_missile()
 
 func new_game():
 	
@@ -39,11 +46,15 @@ func new_game():
 	$Player/ShieldAnimation.hide()
 	$Player/ShieldAnimation.reset()
 	
+	m = 3
+	
 	score = 0
 	lives = 3
 	obs_velocity = 100.0
 	$ObstacleTimer.wait_time = 3
 	$ItemTimer.wait_time = item_interval
+	
+	$HUD.update_missiles(m)
 	
 	get_tree().call_group("obstacles", "queue_free")
 	get_tree().call_group("items", "queue_free")
@@ -132,10 +143,18 @@ func add_shield():
 	$Player/ShieldAnimation.startup()
 
 func add_missile():
+	m += 1
+	if m > 3:
+		use_missile()
+	$HUD.update_missiles(m)
+
+func use_missile():
+	m -= 1
 	missile = true
 	$MissileTimer.start()
 	get_tree().call_group("obstacles", "queue_free")
 	$Player/MissileShot.shootMissile()
+	$HUD.update_missiles(m)
 
 func add_life():
 	if lives < 3:
