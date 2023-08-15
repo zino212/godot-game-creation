@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://l0xqpwyacq78"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_hygqk"]
-[ext_resource type="Texture2D" uid="uid://cjrcr2afqqieb" path="res://Images/Shield_Item.png" id="2_ry5hf"]
+[ext_resource type="Texture2D" uid="uid://cjrcr2afqqieb" path="res://Images/Items/Shield_Item.png" id="2_ry5hf"]
 [ext_resource type="Texture2D" uid="uid://jp2vbuxhus2g" path="res://Images/Missile_Item.png" id="3_kanla"]
 [ext_resource type="Texture2D" uid="uid://csg46ufemmqdv" path="res://Images/Lives1.png" id="4_o8oqm"]
 [ext_resource type="AudioStream" uid="uid://gioxdmoovpfi" path="res://Audio/powerUp.wav" id="5_ckyxb"]
