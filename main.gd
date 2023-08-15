@@ -23,11 +23,8 @@ signal shoot_pulse
 
 signal speed
 
-func _ready():
-	pass
-
 func _process(_delta):
-	show_timer()
+	countdown()
 	
 	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
 		$Player/ShieldAnimation.shutdown()
@@ -70,7 +67,7 @@ func increase_difficulty():
 		if $ObstacleTimer.wait_time > 1:
 			$ObstacleTimer.wait_time -= 0.2
 
-func show_timer():
+func countdown():
 	if ($StartTimer.time_left <= 4) and not ($StartTimer.time_left < 1):
 		$HUD.show_message(str(int($StartTimer.time_left)))
 		
@@ -79,7 +76,6 @@ func show_timer():
 	elif not ($ScoreTimer.is_stopped()):
 		$HUD.show_message("")
 		$HUD.hide_message()
-	
 
 func _on_obstacle_timer_timeout():
 	if missile == false:
@@ -108,6 +104,7 @@ func _on_start_timer_timeout():
 	$ObstacleTimer.start()
 	$ItemTimer.start()
 	$ScoreTimer.start()
+	$Player.start_game()
 
 func _on_score_timer_timeout():
 	score += 1
@@ -137,6 +134,7 @@ func _on_player_hit(body):
 
 func add_shield():
 	shield = true
+	$Player.shield_active()
 	$ShieldTimer.start()
 	$Player/ShieldAnimation.show()
 	$Player/ShieldAnimation.startup()
@@ -154,6 +152,8 @@ func use_missile():
 	get_tree().call_group("obstacles", "queue_free")
 	$Player/MissileShot.shootMissile()
 	$HUD.update_missiles(missile_storage)
+	if sound == true:
+		$AudioPlayer.play_item_audio(1)
 
 func add_life():
 	if lives < 3:
@@ -205,6 +205,7 @@ func _on_item_timer_timeout():
 
 func _on_shield_timer_timeout():
 	shield = false
+	$Player.shield_not_active()
 	$Player/ShieldAnimation.hide()
 
 
