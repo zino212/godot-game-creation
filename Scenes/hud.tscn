@@ -28,6 +28,7 @@ scale = Vector2(2.64, 1)
 [node name="MissileBar" parent="." instance=ExtResource("3_he3ve")]
 visible = false
 position = Vector2(60, 104)
+metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="MissileBar"]
 show_behind_parent = true
@@ -148,14 +149,14 @@ layout_mode = 2
 
 [node name="Controls_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
-tooltip_text = "Configure Resolution and VSync"
+tooltip_text = "View Controls"
 theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "Controls"
 
 [node name="Settings_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
-tooltip_text = "Configure Resolution and VSync"
+tooltip_text = "Configure Settings"
 theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "Settings"
@@ -166,7 +167,7 @@ layout_mode = 2
 
 [node name="Credits_Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
-tooltip_text = "Configure Resolution and VSync"
+tooltip_text = "Marvel at the Game Developers"
 theme_override_fonts/font = ExtResource("3_qv03x")
 theme_override_font_sizes/font_size = 22
 text = "Credits"
