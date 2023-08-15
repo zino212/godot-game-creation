@@ -24,7 +24,7 @@ signal shoot_pulse
 signal speed
 
 func _process(_delta):
-	countdown()
+	show_countdown()
 	
 	if $ShieldTimer.time_left < 3 and $ShieldTimer.time_left > 0:
 		$Player/ShieldAnimation.shutdown()
@@ -56,7 +56,11 @@ func new_game():
 	$HUD.update_lives(lives)
 	$HUD.show_message("Get ready!")
 	$Player.show()
+	
 	$StartTimer.start()
+	if sound == true:
+		$Countdown.play()
+	
 	if music == true:
 		$Music.play()
 
@@ -67,7 +71,7 @@ func increase_difficulty():
 		if $ObstacleTimer.wait_time > 1:
 			$ObstacleTimer.wait_time -= 0.2
 
-func countdown():
+func show_countdown():
 	if ($StartTimer.time_left <= 4) and not ($StartTimer.time_left < 1):
 		$HUD.show_message(str(int($StartTimer.time_left)))
 		
