@@ -1,5 +1,8 @@
 extends Node2D
 
+#-----------------------------------------------------------------
+# Show amount of lives
+
 func _ready():
 	get_node("Life2").hide()
 	get_node("Life1").hide()

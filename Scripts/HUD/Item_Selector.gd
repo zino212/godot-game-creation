@@ -1,3 +1,6 @@
+#-----------------------------------------------------------------
+# SCRIPT FOR EXPORTING ONE SPECIFIC SETTING
+#-----------------------------------------------------------------
 extends HBoxContainer
 
 signal item_changed(new_item)

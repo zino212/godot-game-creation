@@ -1,5 +1,8 @@
 extends Node2D
 
+#-----------------------------------------------------------------
+# Show amount of missiles in storage
+
 func set_missiles(missiles):
 	if missiles == 3:
 		get_node("Box/Missile3").show()

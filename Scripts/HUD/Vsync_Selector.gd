@@ -1,3 +1,6 @@
+#-----------------------------------------------------------------
+# SCRIPT FOR EXPORTING ONE SPECIFIC SETTING
+#-----------------------------------------------------------------
 extends HBoxContainer
 
 signal toggled(is_button_pressed)

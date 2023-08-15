@@ -8,6 +8,8 @@ var hurt_audio = preload("res://Audio/hitHurt.wav")
 
 var countdown = hurt_audio
 
+#-----------------------------------------------------------------
+
 func play_item_audio(type):
 	if type == 0:
 		stream = shield_audio
