@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://4jyt6ybvs6fq"]
+
+[ext_resource type="Script" path="res://missile_bar.gd" id="1_5anf8"]
+[ext_resource type="Texture2D" uid="uid://jp2vbuxhus2g" path="res://Images/Missile_Item.png" id="2_x8g2p"]
+
+[node name="MissileBar" type="Node2D"]
+script = ExtResource("1_5anf8")
+
+[node name="Box" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Missile1" type="Sprite2D" parent="Box"]
+texture = ExtResource("2_x8g2p")
+
+[node name="Missile2" type="Sprite2D" parent="Box"]
+position = Vector2(178, 0)
+texture = ExtResource("2_x8g2p")
+
+[node name="Missile3" type="Sprite2D" parent="Box"]
+position = Vector2(356, 0)
+texture = ExtResource("2_x8g2p")
