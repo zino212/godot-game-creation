@@ -48,7 +48,7 @@ func new_game():
 	score = 0
 	lives = 3
 	obs_velocity = 100.0
-	$ObstacleTimer.wait_time = 3
+	$ObstacleTimer.wait_time = 4
 	$ItemTimer.wait_time = item_interval
 	
 	$HUD.update_missiles(missile_storage)
