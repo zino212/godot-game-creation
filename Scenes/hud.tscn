@@ -66,6 +66,7 @@ offset_bottom = 67.0
 scale = Vector2(4.45271, 0.838568)
 
 [node name="Message" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
