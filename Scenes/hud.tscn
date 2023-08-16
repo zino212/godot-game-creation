@@ -66,14 +66,13 @@ offset_bottom = 67.0
 scale = Vector2(4.45271, 0.838568)
 
 [node name="Message" type="Label" parent="."]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -156.0
-offset_top = 29.0
+offset_top = 4.0
 offset_right = 150.0
-offset_bottom = 128.0
+offset_bottom = 103.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.337255, 0.878431, 1)
 theme_override_fonts/font = ExtResource("3_qv03x")
@@ -93,6 +92,7 @@ offset_bottom = 70.0
 scale = Vector2(6.81098, 1.2)
 
 [node name="Menu" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -194,16 +194,15 @@ offset_right = 275.0
 one_shot = true
 
 [node name="Controls" type="Panel" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -275.5
-offset_top = -237.5
+offset_top = -262.5
 offset_right = 275.5
-offset_bottom = 237.5
+offset_bottom = 262.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -329,6 +328,16 @@ text = "Use the SPACE-Key for firing a pulse."
 horizontal_alignment = 1
 
 [node name="HSeparator4" type="HSeparator" parent="Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Pause" type="Label" parent="Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Press ESC or P for pausing the game."
+horizontal_alignment = 1
+
+[node name="HSeparator7" type="HSeparator" parent="Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
