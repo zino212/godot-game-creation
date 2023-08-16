@@ -92,7 +92,6 @@ offset_bottom = 70.0
 scale = Vector2(6.81098, 1.2)
 
 [node name="Menu" type="Panel" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -194,6 +193,7 @@ offset_right = 275.0
 one_shot = true
 
 [node name="Controls" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
